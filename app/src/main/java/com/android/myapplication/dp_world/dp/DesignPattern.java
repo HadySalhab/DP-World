@@ -1,17 +1,17 @@
 package com.android.myapplication.dp_world.dp;
 
 public class DesignPattern {
-    private final String mId;
+    private final int mId;
     private final String mTitle;
     private final String mCategory;
 
-    public DesignPattern(String id, String title, String category) {
+    public DesignPattern(int id, String title, String category) {
         mId = id;
         mTitle = title;
         mCategory = category;
     }
 
-    public String getId() {
+    public int getId() {
         return mId;
     }
 

@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">DP-World</string>
+    <string name="error_asset_read_failed">asset read failed</string>
 </resources>

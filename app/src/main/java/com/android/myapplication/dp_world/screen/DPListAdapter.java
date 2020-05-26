@@ -1,4 +1,4 @@
-package com.android.myapplication.dp_world.screen.common;
+package com.android.myapplication.dp_world.screen;
 
 import android.content.Context;
 import android.view.LayoutInflater;
