@@ -4,12 +4,12 @@ import android.view.View;
 
 import com.android.myapplication.dp_world.dp.DesignPattern;
 
-interface DesignPatternListItemViewMvc {
+abstract class DesignPatternListItemViewMvc {
     public interface Listener {
         void onDesignPatternClicked(DesignPattern designPattern);
     }
-    void registerListener(Listener listener);
-    void unregisterListener(Listener listener);
-    View getRootView();
-    void bindDesignPattern(DesignPattern designPattern);
+    abstract void registerListener(Listener listener);
+    abstract void unregisterListener(Listener listener);
+    abstract View getRootView();
+    abstract void bindDesignPattern(DesignPattern designPattern);
 }

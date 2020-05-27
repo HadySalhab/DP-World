@@ -6,16 +6,12 @@ import com.android.myapplication.dp_world.dp.DesignPattern;
 
 import java.util.List;
 
-interface DesignPatternListViewMvc {
+abstract class DesignPatternListViewMvc {
     public interface Listener {
         void onDesignPatternClicked(DesignPattern designPattern);
     }
-     View getRootView();
-
-    void registerListener(Listener listener);
-
-    void unregisterListener(Listener listener);
-
-    void bindDesignPatterns(List<DesignPattern> designPatterns);
-
+    abstract View getRootView();
+    abstract void registerListener(Listener listener);
+    abstract void unregisterListener(Listener listener);
+    abstract void bindDesignPatterns(List<DesignPattern> designPatterns);
 }
