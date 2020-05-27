@@ -17,19 +17,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DesignPatternListViewMvcImpl extends DesignPatternListViewMvc implements DesignPatternRecyclerAdapter.Listener {
+
     private RecyclerView mRecyclerDesignPatterns;
     private DesignPatternRecyclerAdapter mRecyclerAdapter;
-    private final List<Listener> mListeners = new ArrayList<>(1);
-
-    @Override
-    public void registerListener(Listener listener) {
-        mListeners.add(listener);
-    }
-
-    @Override
-    public void unregisterListener(Listener listener) {
-        mListeners.remove(listener);
-    }
 
     public DesignPatternListViewMvcImpl(LayoutInflater inflater, @Nullable ViewGroup parent) {
        setRootView(inflater.inflate(R.layout.layout_design_pattern_list, parent, false));
@@ -47,7 +37,7 @@ public class DesignPatternListViewMvcImpl extends DesignPatternListViewMvc imple
 
     @Override
     public void onDesignPatternClicked(DesignPattern designPattern) {
-        for (Listener listener : mListeners) {
+        for (Listener listener : getListeners()) {
             listener.onDesignPatternClicked(designPattern);
         }
     }

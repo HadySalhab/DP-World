@@ -1,13 +1,9 @@
 package com.android.myapplication.dp_world.screen.designpatternlist;
 
-import android.view.View;
-
 import com.android.myapplication.dp_world.dp.DesignPattern;
-import com.android.myapplication.dp_world.screen.common.BaseViewMvc;
-import com.android.myapplication.dp_world.screen.common.ObservableViewMvc;
-import com.android.myapplication.dp_world.screen.common.ViewMvc;
+import com.android.myapplication.dp_world.screen.common.BaseObservableViewMvc;
 
-abstract class DesignPatternListItemViewMvc extends BaseViewMvc implements ObservableViewMvc <DesignPatternListItemViewMvc.Listener> {
+abstract class DesignPatternListItemViewMvc extends BaseObservableViewMvc <DesignPatternListItemViewMvc.Listener> {
     public interface Listener {
         void onDesignPatternClicked(DesignPattern designPattern);
     }

@@ -15,16 +15,6 @@ import java.util.List;
 
 public class DesignPatternListItemViewMvcImpl extends DesignPatternListItemViewMvc {
 
-    private final List<Listener> mListeners = new ArrayList<>(1);
-
-    @Override
-    public void registerListener(Listener listener) {
-        mListeners.add(listener);
-    }
-    @Override
-    public void unregisterListener(Listener listener) {
-        mListeners.remove(listener);
-    }
     private final TextView mTextView;
     private DesignPattern mDesignPattern;
 
@@ -32,7 +22,7 @@ public class DesignPatternListItemViewMvcImpl extends DesignPatternListItemViewM
         setRootView(inflater.inflate(R.layout.layout_design_pattern_list_item, parent, false));
         mTextView = findViewById(R.id.text_dp_title);
         getRootView().setOnClickListener((v -> {
-            for (Listener listener : mListeners) {
+            for (Listener listener : getListeners()) {
                 listener.onDesignPatternClicked(mDesignPattern);
             }
         }));
