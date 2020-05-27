@@ -13,7 +13,7 @@ import com.android.myapplication.dp_world.dp.DesignPattern;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DesignPatternListItemViewMvcImpl implements DesignPatternListItemViewMvc {
+public class DesignPatternListItemViewMvcImpl extends DesignPatternListItemViewMvc {
 
     private final List<Listener> mListeners = new ArrayList<>(1);
 

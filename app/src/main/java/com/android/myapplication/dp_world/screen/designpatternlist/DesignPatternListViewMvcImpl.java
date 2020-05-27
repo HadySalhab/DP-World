@@ -16,7 +16,7 @@ import com.android.myapplication.dp_world.dp.DesignPattern;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DesignPatternListViewMvcImpl implements DesignPatternRecyclerAdapter.Listener, DesignPatternListViewMvc {
+public class DesignPatternListViewMvcImpl extends DesignPatternListViewMvc implements DesignPatternRecyclerAdapter.Listener {
     private View mRootView;
     private RecyclerView mRecyclerDesignPatterns;
     private DesignPatternRecyclerAdapter mRecyclerAdapter;
