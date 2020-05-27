@@ -17,18 +17,18 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DPListActivity extends BaseActivity implements DPListAdapter.OnDPClickListener {
+public class DesignPatternListActivity extends BaseActivity implements DesignPatternListAdapter.OnDesignPatternClickListener {
 
-    private ListView mListDp;
-    private DPListAdapter mDPListAdapter;
+    private ListView mDesignPatternList;
+    private DesignPatternListAdapter mDesignPatternListAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.layout_dp_list);
-        mListDp = findViewById(R.id.list_dp);
-        mDPListAdapter = new DPListAdapter(this, this);
-        mListDp.setAdapter(mDPListAdapter);
+        setContentView(R.layout.layout_design_pattern_list);
+        mDesignPatternList = findViewById(R.id.list_dp);
+        mDesignPatternListAdapter = new DesignPatternListAdapter(this, this);
+        mDesignPatternList.setAdapter(mDesignPatternListAdapter);
 
     }
 
@@ -63,9 +63,9 @@ public class DPListActivity extends BaseActivity implements DPListAdapter.OnDPCl
             DesignPattern designPattern = new DesignPattern(designPatternSchema.getId(), designPatternSchema.getTitle(), designPatternSchema.getCategory());
             designPatterns.add(designPattern);
         }
-        mDPListAdapter.clear();
-        mDPListAdapter.addAll(designPatterns);
-        mDPListAdapter.notifyDataSetChanged();
+        mDesignPatternListAdapter.clear();
+        mDesignPatternListAdapter.addAll(designPatterns);
+        mDesignPatternListAdapter.notifyDataSetChanged();
     }
 
     private void assetReadFailed(){
@@ -74,7 +74,7 @@ public class DPListActivity extends BaseActivity implements DPListAdapter.OnDPCl
 
 
     @Override
-    public void onDPClicked(DesignPattern designPattern) {
+    public void onDesignPatternClicked(DesignPattern designPattern) {
         Toast.makeText(this,designPattern.getTitle(), Toast.LENGTH_SHORT).show();
     }
 }

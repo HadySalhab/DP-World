@@ -13,15 +13,15 @@ import androidx.annotation.Nullable;
 import com.android.myapplication.dp_world.R;
 import com.android.myapplication.dp_world.dp.DesignPattern;
 
-public class DPListAdapter extends ArrayAdapter<DesignPattern> {
+public class DesignPatternListAdapter extends ArrayAdapter<DesignPattern> {
 
-    private final OnDPClickListener mOnDPClickListener;
+    private final OnDesignPatternClickListener mOnDPClickListener;
 
-    public interface OnDPClickListener {
-        void onDPClicked(DesignPattern designPattern);
+    public interface OnDesignPatternClickListener {
+        void onDesignPatternClicked(DesignPattern designPattern);
     }
 
-    public DPListAdapter(Context context, OnDPClickListener onDPClickListener) {
+    public DesignPatternListAdapter(Context context, OnDesignPatternClickListener onDPClickListener) {
         super(context, 0);
         mOnDPClickListener = onDPClickListener;
     }
@@ -31,7 +31,7 @@ public class DPListAdapter extends ArrayAdapter<DesignPattern> {
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         if (convertView == null) {
             convertView = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.layout_dp_list_item, parent, false);
+                    .inflate(R.layout.layout_design_pattern_list_item, parent, false);
         }
         final DesignPattern designPattern = getItem(position);
 
@@ -39,12 +39,12 @@ public class DPListAdapter extends ArrayAdapter<DesignPattern> {
         txtTitle.setText(designPattern.getTitle());
 
         convertView.setOnClickListener((view)->{
-           onDPClicked(designPattern);
+            onDesignPatternClicked(designPattern);
         });
         return convertView;
     }
 
-    private void onDPClicked(DesignPattern designPattern){
-        mOnDPClickListener.onDPClicked(designPattern);
+    private void onDesignPatternClicked(DesignPattern designPattern){
+        mOnDPClickListener.onDesignPatternClicked(designPattern);
     }
 }
