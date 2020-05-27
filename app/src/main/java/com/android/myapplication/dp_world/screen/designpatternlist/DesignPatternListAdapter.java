@@ -1,4 +1,4 @@
-package com.android.myapplication.dp_world.screen;
+package com.android.myapplication.dp_world.screen.designpatternlist;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -15,15 +15,15 @@ import com.android.myapplication.dp_world.dp.DesignPattern;
 
 public class DesignPatternListAdapter extends ArrayAdapter<DesignPattern> {
 
-    private final OnDesignPatternClickListener mOnDPClickListener;
+    private final OnDesignPatternClickListener mOnDesignPatternClickListener;
 
     public interface OnDesignPatternClickListener {
         void onDesignPatternClicked(DesignPattern designPattern);
     }
 
-    public DesignPatternListAdapter(Context context, OnDesignPatternClickListener onDPClickListener) {
+    public DesignPatternListAdapter(Context context, OnDesignPatternClickListener onDesignPatternClickListener) {
         super(context, 0);
-        mOnDPClickListener = onDPClickListener;
+        mOnDesignPatternClickListener = onDesignPatternClickListener;
     }
 
     @NonNull
@@ -45,6 +45,6 @@ public class DesignPatternListAdapter extends ArrayAdapter<DesignPattern> {
     }
 
     private void onDesignPatternClicked(DesignPattern designPattern){
-        mOnDPClickListener.onDesignPatternClicked(designPattern);
+        mOnDesignPatternClickListener.onDesignPatternClicked(designPattern);
     }
 }

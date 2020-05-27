@@ -1,7 +1,7 @@
-package com.android.myapplication.dp_world.screen;
+package com.android.myapplication.dp_world.screen.designpatternlist;
 
 import android.os.Bundle;
-import android.widget.ListView;
+import android.view.LayoutInflater;
 import android.widget.Toast;
 
 import com.android.myapplication.dp_world.R;
@@ -17,19 +17,16 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DesignPatternListActivity extends BaseActivity implements DesignPatternListAdapter.OnDesignPatternClickListener {
+public class DesignPatternListActivity extends BaseActivity implements DesignPatternListViewMvcImpl.Listener {
 
-    private ListView mDesignPatternList;
-    private DesignPatternListAdapter mDesignPatternListAdapter;
+    private DesignPatternListViewMvcImpl mDesignPatternListViewMvc;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.layout_design_pattern_list);
-        mDesignPatternList = findViewById(R.id.list_dp);
-        mDesignPatternListAdapter = new DesignPatternListAdapter(this, this);
-        mDesignPatternList.setAdapter(mDesignPatternListAdapter);
-
+        mDesignPatternListViewMvc = new DesignPatternListViewMvcImpl(LayoutInflater.from(this), null);
+        mDesignPatternListViewMvc.registerListener(this);
+        setContentView(mDesignPatternListViewMvc.getRootView());
     }
 
     @Override
@@ -63,18 +60,15 @@ public class DesignPatternListActivity extends BaseActivity implements DesignPat
             DesignPattern designPattern = new DesignPattern(designPatternSchema.getId(), designPatternSchema.getTitle(), designPatternSchema.getCategory());
             designPatterns.add(designPattern);
         }
-        mDesignPatternListAdapter.clear();
-        mDesignPatternListAdapter.addAll(designPatterns);
-        mDesignPatternListAdapter.notifyDataSetChanged();
+        mDesignPatternListViewMvc.bindDesignPatterns(designPatterns);
     }
 
-    private void assetReadFailed(){
-        Toast.makeText(this,R.string.error_asset_read_failed, Toast.LENGTH_SHORT).show();
+    private void assetReadFailed() {
+        Toast.makeText(this, R.string.error_asset_read_failed, Toast.LENGTH_SHORT).show();
     }
-
 
     @Override
     public void onDesignPatternClicked(DesignPattern designPattern) {
-        Toast.makeText(this,designPattern.getTitle(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, designPattern.getTitle(), Toast.LENGTH_SHORT).show();
     }
 }
