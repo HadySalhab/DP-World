@@ -1,6 +1,7 @@
 package com.android.myapplication.dp_world.screen.designpatternlist;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.widget.Toast;
 
@@ -19,20 +20,21 @@ import java.util.List;
 
 public class DesignPatternListActivity extends BaseActivity implements DesignPatternListViewMvcImpl.Listener {
 
-    private DesignPatternListViewMvcImpl mDesignPatternListViewMvc;
+    private DesignPatternListViewMvc mViewMvc;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mDesignPatternListViewMvc = new DesignPatternListViewMvcImpl(LayoutInflater.from(this), null);
-        mDesignPatternListViewMvc.registerListener(this);
-        setContentView(mDesignPatternListViewMvc.getRootView());
+        mViewMvc = new DesignPatternListViewMvcImpl(LayoutInflater.from(this), null);
+        mViewMvc.registerListener(this);
+        setContentView(mViewMvc.getRootView());
     }
 
     @Override
     protected void onStart() {
         super.onStart();
         loadJsonFromAsset();
+        Log.d("Design Pattern","onStart");
     }
 
     private void loadJsonFromAsset() {
@@ -60,7 +62,8 @@ public class DesignPatternListActivity extends BaseActivity implements DesignPat
             DesignPattern designPattern = new DesignPattern(designPatternSchema.getId(), designPatternSchema.getTitle(), designPatternSchema.getCategory());
             designPatterns.add(designPattern);
         }
-        mDesignPatternListViewMvc.bindDesignPatterns(designPatterns);
+        Log.d("Design Pattern","mDesignPattern");
+        mViewMvc.bindDesignPatterns(designPatterns);
     }
 
     private void assetReadFailed() {
