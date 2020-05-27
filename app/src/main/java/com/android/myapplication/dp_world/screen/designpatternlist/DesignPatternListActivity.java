@@ -34,7 +34,6 @@ public class DesignPatternListActivity extends BaseActivity implements DesignPat
     protected void onStart() {
         super.onStart();
         loadJsonFromAsset();
-        Log.d("Design Pattern","onStart");
     }
 
     private void loadJsonFromAsset() {
@@ -62,7 +61,6 @@ public class DesignPatternListActivity extends BaseActivity implements DesignPat
             DesignPattern designPattern = new DesignPattern(designPatternSchema.getId(), designPatternSchema.getTitle(), designPatternSchema.getCategory());
             designPatterns.add(designPattern);
         }
-        Log.d("Design Pattern","mDesignPattern");
         mViewMvc.bindDesignPatterns(designPatterns);
     }
 

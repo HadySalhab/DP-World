@@ -55,8 +55,7 @@ public class DesignPatternListViewMvcImpl implements DesignPatternRecyclerAdapte
 
     @Override
     public void bindDesignPatterns(List<DesignPattern> designPatterns) {
-        Log.d("Design Pattern","bindDesignPatterns");
-        mRecyclerAdapter.addAll(designPatterns);
+        mRecyclerAdapter.bindDesignPatterns(designPatterns);
         mRecyclerAdapter.notifyDataSetChanged();
     }
 
