@@ -17,7 +17,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DesignPatternListViewMvcImpl extends DesignPatternListViewMvc implements DesignPatternRecyclerAdapter.Listener {
-    private View mRootView;
     private RecyclerView mRecyclerDesignPatterns;
     private DesignPatternRecyclerAdapter mRecyclerAdapter;
     private final List<Listener> mListeners = new ArrayList<>(1);
@@ -32,25 +31,12 @@ public class DesignPatternListViewMvcImpl extends DesignPatternListViewMvc imple
         mListeners.remove(listener);
     }
 
-    @Override
-    public View getRootView() {
-        return mRootView.getRootView();
-    }
-
     public DesignPatternListViewMvcImpl(LayoutInflater inflater, @Nullable ViewGroup parent) {
-        mRootView = inflater.inflate(R.layout.layout_design_pattern_list, parent, false);
+       setRootView(inflater.inflate(R.layout.layout_design_pattern_list, parent, false));
         mRecyclerDesignPatterns = findViewById(R.id.recyclerView_desing_pattern);
         mRecyclerAdapter = new DesignPatternRecyclerAdapter(this, inflater);
         mRecyclerDesignPatterns.setLayoutManager(new LinearLayoutManager(getContext()));
         mRecyclerDesignPatterns.setAdapter(mRecyclerAdapter);
-    }
-
-    private <T extends View> T findViewById(int id) {
-        return mRootView.findViewById(id);
-    }
-
-    private Context getContext() {
-        return mRootView.getContext();
     }
 
     @Override

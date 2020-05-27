@@ -21,19 +21,15 @@ public class DesignPatternListItemViewMvcImpl extends DesignPatternListItemViewM
     public void registerListener(Listener listener) {
         mListeners.add(listener);
     }
-
     @Override
     public void unregisterListener(Listener listener) {
         mListeners.remove(listener);
     }
-
-
-    private final View mRootView;
     private final TextView mTextView;
     private DesignPattern mDesignPattern;
 
     public DesignPatternListItemViewMvcImpl(LayoutInflater inflater, @Nullable ViewGroup parent) {
-        mRootView = inflater.inflate(R.layout.layout_design_pattern_list_item, parent, false);
+        setRootView(inflater.inflate(R.layout.layout_design_pattern_list_item, parent, false));
         mTextView = findViewById(R.id.text_dp_title);
         getRootView().setOnClickListener((v -> {
             for (Listener listener : mListeners) {
@@ -41,19 +37,9 @@ public class DesignPatternListItemViewMvcImpl extends DesignPatternListItemViewM
             }
         }));
     }
-
-    @Override
-    public View getRootView() {
-        return mRootView;
-    }
-
     @Override
     public void bindDesignPattern(DesignPattern designPattern) {
         mDesignPattern = designPattern;
         mTextView.setText(designPattern.getTitle());
-    }
-
-    private <T extends View> T findViewById(int id) {
-        return getRootView().findViewById(id);
     }
 }
