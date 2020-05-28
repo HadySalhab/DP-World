@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.myapplication.dp_world.R;
 import com.android.myapplication.dp_world.dp.DesignPattern;
+import com.android.myapplication.dp_world.screen.common.ViewMvcFactory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,10 +22,10 @@ public class DesignPatternListViewMvcImpl extends DesignPatternListViewMvc imple
     private RecyclerView mRecyclerDesignPatterns;
     private DesignPatternRecyclerAdapter mRecyclerAdapter;
 
-    public DesignPatternListViewMvcImpl(LayoutInflater inflater, @Nullable ViewGroup parent) {
+    public DesignPatternListViewMvcImpl(LayoutInflater inflater, @Nullable ViewGroup parent, ViewMvcFactory viewMvcFactory) {
        setRootView(inflater.inflate(R.layout.layout_design_pattern_list, parent, false));
         mRecyclerDesignPatterns = findViewById(R.id.recyclerView_desing_pattern);
-        mRecyclerAdapter = new DesignPatternRecyclerAdapter(this, inflater);
+        mRecyclerAdapter = new DesignPatternRecyclerAdapter(this, viewMvcFactory);
         mRecyclerDesignPatterns.setLayoutManager(new LinearLayoutManager(getContext()));
         mRecyclerDesignPatterns.setAdapter(mRecyclerAdapter);
     }
