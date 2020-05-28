@@ -1,5 +1,6 @@
 package com.android.myapplication.dp_world.common.dependencyinjection.presentation;
 
+import com.android.myapplication.dp_world.screen.designpatterncatalogue.CatalogueListActivity;
 import com.android.myapplication.dp_world.screen.designpatternlist.DesignPatternListActivity;
 
 import dagger.Subcomponent;
@@ -7,4 +8,5 @@ import dagger.Subcomponent;
 @Subcomponent(modules = PresentationModule.class)
 public interface PresentationComponent {
     void inject(DesignPatternListActivity designPatternListActivity);
+    void inject(CatalogueListActivity designPatternCatalogueListActivity);
 }

@@ -7,5 +7,5 @@ public abstract class DesignPatternListItemViewMvc extends BaseObservableViewMvc
     public interface Listener {
         void onDesignPatternClicked(DesignPattern designPattern);
     }
-    abstract void bindDesignPattern(DesignPattern designPattern);
+    protected abstract void bindDesignPattern(DesignPattern designPattern);
 }

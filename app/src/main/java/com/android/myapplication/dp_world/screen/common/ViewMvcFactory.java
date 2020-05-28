@@ -5,6 +5,10 @@ import android.view.ViewGroup;
 
 import androidx.annotation.Nullable;
 
+import com.android.myapplication.dp_world.screen.designpatterncatalogue.CatalogueListItemViewMvc;
+import com.android.myapplication.dp_world.screen.designpatterncatalogue.CatalogueListItemViewMvcImpl;
+import com.android.myapplication.dp_world.screen.designpatterncatalogue.CatalogueListViewMvc;
+import com.android.myapplication.dp_world.screen.designpatterncatalogue.CatalogueListViewMvcImpl;
 import com.android.myapplication.dp_world.screen.designpatternlist.DesignPatternListItemViewMvc;
 import com.android.myapplication.dp_world.screen.designpatternlist.DesignPatternListItemViewMvcImpl;
 import com.android.myapplication.dp_world.screen.designpatternlist.DesignPatternListViewMvc;
@@ -25,6 +29,10 @@ public class ViewMvcFactory {
             viewMvc = new DesignPatternListViewMvcImpl(mLayoutInflater, parent, this);
         } else if (mvcViewClass == DesignPatternListItemViewMvc.class) {
             viewMvc = new DesignPatternListItemViewMvcImpl(mLayoutInflater, parent);
+        } else if (mvcViewClass == CatalogueListViewMvc.class) {
+            viewMvc = new CatalogueListViewMvcImpl(mLayoutInflater, parent, this);
+        } else if (mvcViewClass == CatalogueListItemViewMvc.class) {
+            viewMvc = new CatalogueListItemViewMvcImpl(mLayoutInflater, parent);
         } else {
             throw new IllegalArgumentException("unsupported MVC view class " + mvcViewClass);
         }

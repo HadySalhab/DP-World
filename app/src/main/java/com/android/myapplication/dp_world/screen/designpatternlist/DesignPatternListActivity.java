@@ -11,6 +11,7 @@ import com.android.myapplication.dp_world.data.DesignPatternsResponseSchema;
 import com.android.myapplication.dp_world.dp.DesignPattern;
 import com.android.myapplication.dp_world.screen.common.BaseActivity;
 import com.android.myapplication.dp_world.screen.common.ViewMvcFactory;
+import com.android.myapplication.dp_world.screen.designpatterncatalogue.CatalogueListActivity;
 import com.google.gson.Gson;
 
 import java.io.IOException;
@@ -58,7 +59,6 @@ public class DesignPatternListActivity extends BaseActivity implements DesignPat
             json = new String(buffer, "UTF-8");
             DesignPatternsResponseSchema designPatternsResponseSchema = mGson.fromJson(json, DesignPatternsResponseSchema.class);
             bindDesignPatterns(designPatternsResponseSchema.getDesignPatterns());
-
         } catch (IOException ioe) {
             ioe.printStackTrace();
             assetReadFailed();
@@ -80,6 +80,6 @@ public class DesignPatternListActivity extends BaseActivity implements DesignPat
 
     @Override
     public void onDesignPatternClicked(DesignPattern designPattern) {
-        Toast.makeText(this, designPattern.getTitle(), Toast.LENGTH_SHORT).show();
+        CatalogueListActivity.start(this, designPattern.getId());
     }
 }
