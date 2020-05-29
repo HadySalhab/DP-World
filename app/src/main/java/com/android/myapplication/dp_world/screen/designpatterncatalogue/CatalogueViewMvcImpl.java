@@ -9,11 +9,11 @@ import androidx.annotation.Nullable;
 import com.android.myapplication.dp_world.R;
 import com.android.myapplication.dp_world.screen.common.ViewMvcFactory;
 
-public class CatalogueListViewMvcImpl extends CatalogueListViewMvc implements CatalogueArrayAdapter.Listener {
+public class CatalogueViewMvcImpl extends CatalogueViewMvc implements CatalogueArrayAdapter.Listener {
     private final ListView mListView;
     private final CatalogueArrayAdapter mAdapter;
 
-    public CatalogueListViewMvcImpl(LayoutInflater layoutInflater, @Nullable ViewGroup parent, ViewMvcFactory viewMvcFactory) {
+    public CatalogueViewMvcImpl(LayoutInflater layoutInflater, @Nullable ViewGroup parent, ViewMvcFactory viewMvcFactory) {
         setRootView(layoutInflater.inflate(R.layout.layout_catalogue_list, parent, false));
         mListView = findViewById(R.id.list_catalogue);
         mAdapter = new CatalogueArrayAdapter(getContext(), this, viewMvcFactory);
@@ -29,7 +29,7 @@ public class CatalogueListViewMvcImpl extends CatalogueListViewMvc implements Ca
 
     @Override
     public void onCatalogueItemClicked(CatalogueItem designPatternCatalogueListItem) {
-        for (CatalogueListViewMvc.Listener listener : getListeners()) {
+        for (CatalogueViewMvc.Listener listener : getListeners()) {
             listener.onCatalogueItemClicked(designPatternCatalogueListItem);
         }
     }

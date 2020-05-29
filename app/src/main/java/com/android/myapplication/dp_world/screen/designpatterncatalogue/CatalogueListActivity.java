@@ -10,12 +10,12 @@ import com.android.myapplication.dp_world.screen.common.ViewMvcFactory;
 
 import javax.inject.Inject;
 
-public class CatalogueListActivity extends BaseActivity implements CatalogueListViewMvc.Listener {
+public class CatalogueListActivity extends BaseActivity implements CatalogueViewMvc.Listener {
     @Inject
     ViewMvcFactory mViewMvcFactory;
-    private CatalogueListViewMvc mViewMvc;
+    private CatalogueViewMvc mViewMvc;
     private static final String DESIGN_PATTERN_ID = "DESIGN_PATTERN_ID";
-
+    private int dpId ;
     public static void start(Context context, int designPatternId) {
         Intent intent = new Intent(context, CatalogueListActivity.class);
         intent.putExtra(DESIGN_PATTERN_ID, designPatternId);
@@ -26,8 +26,9 @@ public class CatalogueListActivity extends BaseActivity implements CatalogueList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getPresentationComponent().inject(this);
-        mViewMvc = mViewMvcFactory.getViewMvc(CatalogueListViewMvc.class, null);
+        mViewMvc = mViewMvcFactory.getViewMvc(CatalogueViewMvc.class, null);
         mViewMvc.registerListener(this);
+        dpId = getIntent().getIntExtra(DESIGN_PATTERN_ID,0);
         setContentView(mViewMvc.getRootView());
     }
 
@@ -42,6 +43,6 @@ public class CatalogueListActivity extends BaseActivity implements CatalogueList
 
     @Override
     public void onCatalogueItemClicked(CatalogueItem designPatternCatalogueListItem) {
-        Toast.makeText(this, "Catalogue Item Clicked: " + designPatternCatalogueListItem.getName(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Catalogue : " + designPatternCatalogueListItem.getName() +", for: "+dpId, Toast.LENGTH_SHORT).show();
     }
 }

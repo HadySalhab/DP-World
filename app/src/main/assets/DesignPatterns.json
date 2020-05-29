@@ -19,13 +19,13 @@
     "category": "Creational"
   },
   {
-    "id": 3,
+    "id": 4,
     "title": "Factory Method",
     "description": "Define an interface for creating an object, but let subclasses decide which class to instantiate. Lets a class defer instantiation to subclasses",
     "category": "Creational"
   },
   {
-    "id": 4,
+    "id": 5,
     "title": "Abstract Factory",
     "description": "Provides an interface for creating families of related or dependent objects without specifying their concrete class.",
     "category": "Creational"

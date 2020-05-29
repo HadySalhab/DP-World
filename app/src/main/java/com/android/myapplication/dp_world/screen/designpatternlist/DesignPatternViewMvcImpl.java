@@ -1,9 +1,6 @@
 package com.android.myapplication.dp_world.screen.designpatternlist;
 
-import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.Nullable;
@@ -14,15 +11,14 @@ import com.android.myapplication.dp_world.R;
 import com.android.myapplication.dp_world.dp.DesignPattern;
 import com.android.myapplication.dp_world.screen.common.ViewMvcFactory;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class DesignPatternListViewMvcImpl extends DesignPatternListViewMvc implements DesignPatternRecyclerAdapter.Listener {
+public class DesignPatternViewMvcImpl extends DesignPatternViewMvc implements DesignPatternRecyclerAdapter.Listener {
 
     private RecyclerView mRecyclerDesignPatterns;
     private DesignPatternRecyclerAdapter mRecyclerAdapter;
 
-    public DesignPatternListViewMvcImpl(LayoutInflater inflater, @Nullable ViewGroup parent, ViewMvcFactory viewMvcFactory) {
+    public DesignPatternViewMvcImpl(LayoutInflater inflater, @Nullable ViewGroup parent, ViewMvcFactory viewMvcFactory) {
        setRootView(inflater.inflate(R.layout.layout_design_pattern_list, parent, false));
         mRecyclerDesignPatterns = findViewById(R.id.recyclerView_desing_pattern);
         mRecyclerAdapter = new DesignPatternRecyclerAdapter(this, viewMvcFactory);

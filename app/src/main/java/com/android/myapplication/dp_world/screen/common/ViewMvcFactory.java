@@ -7,12 +7,12 @@ import androidx.annotation.Nullable;
 
 import com.android.myapplication.dp_world.screen.designpatterncatalogue.CatalogueListItemViewMvc;
 import com.android.myapplication.dp_world.screen.designpatterncatalogue.CatalogueListItemViewMvcImpl;
-import com.android.myapplication.dp_world.screen.designpatterncatalogue.CatalogueListViewMvc;
-import com.android.myapplication.dp_world.screen.designpatterncatalogue.CatalogueListViewMvcImpl;
+import com.android.myapplication.dp_world.screen.designpatterncatalogue.CatalogueViewMvc;
+import com.android.myapplication.dp_world.screen.designpatterncatalogue.CatalogueViewMvcImpl;
 import com.android.myapplication.dp_world.screen.designpatternlist.DesignPatternListItemViewMvc;
 import com.android.myapplication.dp_world.screen.designpatternlist.DesignPatternListItemViewMvcImpl;
-import com.android.myapplication.dp_world.screen.designpatternlist.DesignPatternListViewMvc;
-import com.android.myapplication.dp_world.screen.designpatternlist.DesignPatternListViewMvcImpl;
+import com.android.myapplication.dp_world.screen.designpatternlist.DesignPatternViewMvc;
+import com.android.myapplication.dp_world.screen.designpatternlist.DesignPatternViewMvcImpl;
 
 public class ViewMvcFactory {
     private final LayoutInflater mLayoutInflater;
@@ -25,12 +25,12 @@ public class ViewMvcFactory {
 
         ViewMvc viewMvc;
 
-        if (mvcViewClass == DesignPatternListViewMvc.class) {
-            viewMvc = new DesignPatternListViewMvcImpl(mLayoutInflater, parent, this);
+        if (mvcViewClass == DesignPatternViewMvc.class) {
+            viewMvc = new DesignPatternViewMvcImpl(mLayoutInflater, parent, this);
         } else if (mvcViewClass == DesignPatternListItemViewMvc.class) {
             viewMvc = new DesignPatternListItemViewMvcImpl(mLayoutInflater, parent);
-        } else if (mvcViewClass == CatalogueListViewMvc.class) {
-            viewMvc = new CatalogueListViewMvcImpl(mLayoutInflater, parent, this);
+        } else if (mvcViewClass == CatalogueViewMvc.class) {
+            viewMvc = new CatalogueViewMvcImpl(mLayoutInflater, parent, this);
         } else if (mvcViewClass == CatalogueListItemViewMvc.class) {
             viewMvc = new CatalogueListItemViewMvcImpl(mLayoutInflater, parent);
         } else {

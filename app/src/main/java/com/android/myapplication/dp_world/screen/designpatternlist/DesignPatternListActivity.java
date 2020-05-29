@@ -21,9 +21,9 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-public class DesignPatternListActivity extends BaseActivity implements DesignPatternListViewMvcImpl.Listener {
+public class DesignPatternListActivity extends BaseActivity implements DesignPatternViewMvcImpl.Listener {
 
-    private DesignPatternListViewMvc mViewMvc;
+    private DesignPatternViewMvc mViewMvc;
 
     @Inject
     Gson mGson;
@@ -37,7 +37,7 @@ public class DesignPatternListActivity extends BaseActivity implements DesignPat
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getPresentationComponent().inject(this);
-        mViewMvc = mViewMvcFactory.getViewMvc(DesignPatternListViewMvc.class, null);
+        mViewMvc = mViewMvcFactory.getViewMvc(DesignPatternViewMvc.class, null);
         mViewMvc.registerListener(this);
         setContentView(mViewMvc.getRootView());
     }
