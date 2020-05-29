@@ -8,7 +8,7 @@ import com.techyourchance.threadposter.UiThreadPoster;
 import java.io.IOException;
 import java.io.InputStream;
 
-class AssetStreamReader {
+public class AssetStreamReader {
 
     public interface Listener {
         void onDesignPatternDataRead(String json);
