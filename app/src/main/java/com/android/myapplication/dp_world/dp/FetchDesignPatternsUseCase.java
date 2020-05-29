@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FetchDesignPatternsUseCase extends BaseObservable<FetchDesignPatternsUseCase.Listener> {
-    interface Listener {
+    public interface Listener {
         void onDesignPatternsFetched(List<DesignPattern> designPatterns);
 
         void onDesignPatternsFetchFailed(String errorMessage);

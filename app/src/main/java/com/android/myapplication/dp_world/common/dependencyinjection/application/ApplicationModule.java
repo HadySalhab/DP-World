@@ -3,6 +3,8 @@ package com.android.myapplication.dp_world.common.dependencyinjection.applicatio
 import android.app.Application;
 
 import com.google.gson.Gson;
+import com.techyourchance.threadposter.BackgroundThreadPoster;
+import com.techyourchance.threadposter.UiThreadPoster;
 
 import javax.inject.Singleton;
 
@@ -27,4 +29,17 @@ public class ApplicationModule {
     Gson getGson() {
         return new Gson();
     }
+
+    @Singleton
+    @Provides
+    BackgroundThreadPoster getBackgroundThreadPoster() {
+        return new BackgroundThreadPoster();
+    }
+
+    @Singleton
+    @Provides
+    UiThreadPoster getUiThreadPoster() {
+        return new UiThreadPoster();
+    }
+
 }

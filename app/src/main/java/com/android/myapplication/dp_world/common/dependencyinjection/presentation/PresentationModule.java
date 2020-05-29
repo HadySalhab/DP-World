@@ -8,7 +8,13 @@ import android.view.LayoutInflater;
 import androidx.fragment.app.FragmentActivity;
 
 import com.android.myapplication.dp_world.common.Constants;
+import com.android.myapplication.dp_world.data.AssetStreamReader;
+import com.android.myapplication.dp_world.data.JsonToGsonConverter;
+import com.android.myapplication.dp_world.dp.FetchDesignPatternsUseCase;
 import com.android.myapplication.dp_world.screen.common.ViewMvcFactory;
+import com.google.gson.Gson;
+import com.techyourchance.threadposter.BackgroundThreadPoster;
+import com.techyourchance.threadposter.UiThreadPoster;
 
 import java.io.InputStream;
 
@@ -48,5 +54,22 @@ public class PresentationModule {
         return new ViewMvcFactory(layoutInflater);
     }
 
+    @Provides
+    AssetStreamReader getAssetStreamReader(AssetManager assetManager,
+                                           BackgroundThreadPoster backgroundThreadPoster,
+                                           UiThreadPoster uiThreadPoster) {
+        return new AssetStreamReader(assetManager, backgroundThreadPoster, uiThreadPoster);
+    }
+
+    @Provides
+    JsonToGsonConverter getJsonToGsonConverter(Gson gson) {
+        return new JsonToGsonConverter(gson);
+    }
+
+    @Provides
+    FetchDesignPatternsUseCase getFetchDesignPatternsUseCase(AssetStreamReader assetStreamReader,
+                                                             JsonToGsonConverter jsonToGsonConverter) {
+        return new FetchDesignPatternsUseCase(assetStreamReader, jsonToGsonConverter);
+    }
 
 }

@@ -2,6 +2,7 @@ package com.android.myapplication.dp_world.data;
 
 import android.content.res.AssetManager;
 
+import com.android.myapplication.dp_world.common.Constants;
 import com.techyourchance.threadposter.BackgroundThreadPoster;
 import com.techyourchance.threadposter.UiThreadPoster;
 
@@ -20,7 +21,7 @@ public class AssetStreamReader {
     private final UiThreadPoster mUiThreadPoster;
     private final Object Lock = new Object();
 
-    AssetStreamReader(AssetManager assetManager, BackgroundThreadPoster backgroundThreadPoster, UiThreadPoster uiThreadPoster) {
+   public AssetStreamReader(AssetManager assetManager, BackgroundThreadPoster backgroundThreadPoster, UiThreadPoster uiThreadPoster) {
         mAssetManager = assetManager;
         mBackgroundThreadPoster = backgroundThreadPoster;
         mUiThreadPoster = uiThreadPoster;
@@ -59,7 +60,7 @@ public class AssetStreamReader {
             byte[] buffer = new byte[size];
             inputStream.read(buffer);
             inputStream.close();
-            return new String(buffer, "UTF-8");
+            return new String(buffer, Constants.CHARSET_NAME);
         } catch (IOException ioException) {
             throw ioException;
         }
