@@ -49,20 +49,7 @@ public class DesignPatternListActivity extends BaseActivity implements DesignPat
     }
 
     private void loadJsonFromAsset() {
-        String json = "";
-        try {
-            InputStream inputStream = mAssetManager.open(Constants.ASSET_FILE_NAME);
-            int size = inputStream.available();
-            byte[] buffer = new byte[size];
-            inputStream.read(buffer);
-            inputStream.close();
-            json = new String(buffer, "UTF-8");
-            DesignPatternsResponseSchema designPatternsResponseSchema = mGson.fromJson(json, DesignPatternsResponseSchema.class);
-            bindDesignPatterns(designPatternsResponseSchema.getDesignPatterns());
-        } catch (IOException ioe) {
-            ioe.printStackTrace();
-            assetReadFailed();
-        }
+
     }
 
     private void bindDesignPatterns(List<DesignPatternSchema> designPatternSchemas) {
