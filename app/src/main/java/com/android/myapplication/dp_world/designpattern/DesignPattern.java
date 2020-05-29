@@ -1,4 +1,4 @@
-package com.android.myapplication.dp_world.dp;
+package com.android.myapplication.dp_world.designpattern;
 
 import java.util.Objects;
 

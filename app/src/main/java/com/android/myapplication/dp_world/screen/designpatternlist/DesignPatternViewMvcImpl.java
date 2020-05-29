@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.myapplication.dp_world.R;
-import com.android.myapplication.dp_world.dp.DesignPattern;
+import com.android.myapplication.dp_world.designpattern.DesignPattern;
 import com.android.myapplication.dp_world.screen.common.ViewMvcFactory;
 
 import java.util.List;

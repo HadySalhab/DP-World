@@ -1,8 +1,8 @@
-package com.android.myapplication.dp_world.screen.common;
+package com.android.myapplication.dp_world.screen.common.controllers;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.android.myapplication.dp_world.MyApplication;
+import com.android.myapplication.dp_world.common.MyApplication;
 import com.android.myapplication.dp_world.common.dependencyinjection.application.ApplicationComponent;
 import com.android.myapplication.dp_world.common.dependencyinjection.presentation.PresentationComponent;
 import com.android.myapplication.dp_world.common.dependencyinjection.presentation.PresentationModule;

@@ -5,8 +5,10 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.android.myapplication.dp_world.dp.DesignPattern;
+import com.android.myapplication.dp_world.designpattern.DesignPattern;
 import com.android.myapplication.dp_world.screen.common.ViewMvcFactory;
+import com.android.myapplication.dp_world.screen.designpatternlist.designpatternitem.DesignPatternListItemViewMvc;
+import com.android.myapplication.dp_world.screen.designpatternlist.designpatternitem.DesignPatternListItemViewMvcImpl;
 
 import java.util.ArrayList;
 import java.util.List;

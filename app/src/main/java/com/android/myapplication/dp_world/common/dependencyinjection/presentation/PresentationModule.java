@@ -7,16 +7,13 @@ import android.view.LayoutInflater;
 
 import androidx.fragment.app.FragmentActivity;
 
-import com.android.myapplication.dp_world.common.Constants;
 import com.android.myapplication.dp_world.data.AssetStreamReader;
 import com.android.myapplication.dp_world.data.JsonToGsonConverter;
-import com.android.myapplication.dp_world.dp.FetchDesignPatternsUseCase;
+import com.android.myapplication.dp_world.designpattern.FetchDesignPatternsUseCase;
 import com.android.myapplication.dp_world.screen.common.ViewMvcFactory;
 import com.google.gson.Gson;
 import com.techyourchance.threadposter.BackgroundThreadPoster;
 import com.techyourchance.threadposter.UiThreadPoster;
-
-import java.io.InputStream;
 
 import dagger.Module;
 import dagger.Provides;

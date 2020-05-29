@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
-import com.android.myapplication.dp_world.screen.common.BaseActivity;
+import com.android.myapplication.dp_world.screen.common.controllers.BaseActivity;
 import com.android.myapplication.dp_world.screen.common.ViewMvcFactory;
 
 import javax.inject.Inject;

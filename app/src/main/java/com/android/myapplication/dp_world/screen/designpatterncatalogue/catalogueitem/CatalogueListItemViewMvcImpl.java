@@ -1,4 +1,4 @@
-package com.android.myapplication.dp_world.screen.designpatterncatalogue;
+package com.android.myapplication.dp_world.screen.designpatterncatalogue.catalogueitem;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -7,6 +7,7 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 
 import com.android.myapplication.dp_world.R;
+import com.android.myapplication.dp_world.screen.designpatterncatalogue.CatalogueItem;
 
 public class CatalogueListItemViewMvcImpl extends CatalogueListItemViewMvc {
     private CatalogueItem mCatalogueItem;
@@ -23,7 +24,7 @@ public class CatalogueListItemViewMvcImpl extends CatalogueListItemViewMvc {
     }
 
     @Override
-    protected void bindCatalogueItem(CatalogueItem catalogueItem) {
+    public void bindCatalogueItem(CatalogueItem catalogueItem) {
         mCatalogueItem = catalogueItem;
         mTextView.setText(mCatalogueItem.getName());
     }

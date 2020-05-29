@@ -1,4 +1,4 @@
-package com.android.myapplication.dp_world.data;
+package com.android.myapplication.dp_world.data.designpattern;
 
 import com.google.gson.annotations.SerializedName;
 

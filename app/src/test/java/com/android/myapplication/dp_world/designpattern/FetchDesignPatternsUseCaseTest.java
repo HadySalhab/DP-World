@@ -1,14 +1,10 @@
-package com.android.myapplication.dp_world.dp;
+package com.android.myapplication.dp_world.designpattern;
 
 import com.android.myapplication.dp_world.data.AssetStreamReader;
-import com.android.myapplication.dp_world.data.DesignPatternSchema;
-import com.android.myapplication.dp_world.data.DesignPatternsResponseSchema;
+import com.android.myapplication.dp_world.data.designpattern.DesignPatternSchema;
+import com.android.myapplication.dp_world.data.designpattern.DesignPatternsResponseSchema;
 import com.android.myapplication.dp_world.data.JsonToGsonConverter;
 
-import static org.junit.Assert.*;
-
-import org.junit.Assert;
-import org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -23,11 +19,8 @@ import org.mockito.stubbing.Answer;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.hamcrest.CoreMatchers.*;
-import static org.junit.Assert.*;
 import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.*;
-import static org.mockito.ArgumentCaptor.*;
 
 @RunWith(MockitoJUnitRunner.class)
 public class FetchDesignPatternsUseCaseTest {

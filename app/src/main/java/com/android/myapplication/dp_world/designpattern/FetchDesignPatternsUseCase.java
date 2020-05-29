@@ -1,10 +1,10 @@
-package com.android.myapplication.dp_world.dp;
+package com.android.myapplication.dp_world.designpattern;
 
 import com.android.myapplication.dp_world.common.BaseObservable;
 import com.android.myapplication.dp_world.common.Constants;
 import com.android.myapplication.dp_world.data.AssetStreamReader;
-import com.android.myapplication.dp_world.data.DesignPatternSchema;
-import com.android.myapplication.dp_world.data.DesignPatternsResponseSchema;
+import com.android.myapplication.dp_world.data.designpattern.DesignPatternSchema;
+import com.android.myapplication.dp_world.data.designpattern.DesignPatternsResponseSchema;
 import com.android.myapplication.dp_world.data.JsonToGsonConverter;
 
 import java.util.ArrayList;

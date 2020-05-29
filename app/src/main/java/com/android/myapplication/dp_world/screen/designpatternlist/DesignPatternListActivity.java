@@ -1,23 +1,15 @@
 package com.android.myapplication.dp_world.screen.designpatternlist;
 
-import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.widget.Toast;
 
 import com.android.myapplication.dp_world.R;
-import com.android.myapplication.dp_world.common.Constants;
-import com.android.myapplication.dp_world.data.DesignPatternSchema;
-import com.android.myapplication.dp_world.data.DesignPatternsResponseSchema;
-import com.android.myapplication.dp_world.dp.DesignPattern;
-import com.android.myapplication.dp_world.dp.FetchDesignPatternsUseCase;
-import com.android.myapplication.dp_world.screen.common.BaseActivity;
+import com.android.myapplication.dp_world.designpattern.DesignPattern;
+import com.android.myapplication.dp_world.designpattern.FetchDesignPatternsUseCase;
+import com.android.myapplication.dp_world.screen.common.controllers.BaseActivity;
 import com.android.myapplication.dp_world.screen.common.ViewMvcFactory;
 import com.android.myapplication.dp_world.screen.designpatterncatalogue.CatalogueListActivity;
-import com.google.gson.Gson;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;

@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.android.myapplication.dp_world.screen.common.ViewMvcFactory;
+import com.android.myapplication.dp_world.screen.designpatterncatalogue.catalogueitem.CatalogueListItemViewMvc;
 
 public class CatalogueArrayAdapter extends ArrayAdapter<CatalogueItem> implements CatalogueListItemViewMvc.Listener {
 

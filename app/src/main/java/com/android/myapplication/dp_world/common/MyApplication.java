@@ -1,4 +1,4 @@
-package com.android.myapplication.dp_world;
+package com.android.myapplication.dp_world.common;
 
 import android.app.Application;
 

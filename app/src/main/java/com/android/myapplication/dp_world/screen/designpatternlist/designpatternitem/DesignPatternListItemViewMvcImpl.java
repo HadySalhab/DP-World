@@ -1,4 +1,4 @@
-package com.android.myapplication.dp_world.screen.designpatternlist;
+package com.android.myapplication.dp_world.screen.designpatternlist.designpatternitem;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -7,7 +7,7 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 
 import com.android.myapplication.dp_world.R;
-import com.android.myapplication.dp_world.dp.DesignPattern;
+import com.android.myapplication.dp_world.designpattern.DesignPattern;
 
 public class DesignPatternListItemViewMvcImpl extends DesignPatternListItemViewMvc {
 

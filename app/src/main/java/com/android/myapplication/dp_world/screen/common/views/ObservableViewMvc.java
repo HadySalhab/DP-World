@@ -1,4 +1,4 @@
-package com.android.myapplication.dp_world.screen.common;
+package com.android.myapplication.dp_world.screen.common.views;
 
 public interface ObservableViewMvc<ListenerType> extends ViewMvc {
 
