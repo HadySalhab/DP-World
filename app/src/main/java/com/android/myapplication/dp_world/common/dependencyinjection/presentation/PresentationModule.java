@@ -11,6 +11,9 @@ import com.android.myapplication.dp_world.data.AssetStreamReader;
 import com.android.myapplication.dp_world.data.JsonToGsonConverter;
 import com.android.myapplication.dp_world.designpattern.FetchDesignPatternsUseCase;
 import com.android.myapplication.dp_world.screen.common.ViewMvcFactory;
+import com.android.myapplication.dp_world.screen.common.views.ScreensNavigator;
+import com.android.myapplication.dp_world.screen.common.views.ToastHelper;
+import com.android.myapplication.dp_world.screen.designpatternlist.DesignPatternListController;
 import com.google.gson.Gson;
 import com.techyourchance.threadposter.BackgroundThreadPoster;
 import com.techyourchance.threadposter.UiThreadPoster;
@@ -67,6 +70,24 @@ public class PresentationModule {
     FetchDesignPatternsUseCase getFetchDesignPatternsUseCase(AssetStreamReader assetStreamReader,
                                                              JsonToGsonConverter jsonToGsonConverter) {
         return new FetchDesignPatternsUseCase(assetStreamReader, jsonToGsonConverter);
+    }
+
+    @Provides
+    ToastHelper getToastHelper(Context context) {
+        return new ToastHelper(context);
+    }
+
+    @Provides
+    ScreensNavigator getScreensNavigator(Context context) {
+        return new ScreensNavigator(context);
+    }
+
+    @Provides
+    DesignPatternListController getDesignPatternListController(FetchDesignPatternsUseCase fetchDesignPatternsUseCase,
+                                                               ToastHelper toastHelper,
+                                                               ScreensNavigator screensNavigator
+    ) {
+        return new DesignPatternListController(fetchDesignPatternsUseCase, toastHelper, screensNavigator);
     }
 
 }
