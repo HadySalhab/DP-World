@@ -4,17 +4,21 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.myapplication.dp_world.R;
 import com.android.myapplication.dp_world.designpattern.DesignPattern;
 import com.android.myapplication.dp_world.screen.common.ViewMvcFactory;
+import com.android.myapplication.dp_world.screen.common.toolbar.ToolbarViewMvc;
 
 import java.util.List;
 
 public class DesignPatternViewMvcImpl extends DesignPatternViewMvc implements DesignPatternRecyclerAdapter.Listener {
 
+    private final ToolbarViewMvc mToolbarViewMvc;
+    private final Toolbar mToolbar;
     private RecyclerView mRecyclerDesignPatterns;
     private DesignPatternRecyclerAdapter mRecyclerAdapter;
 
@@ -24,6 +28,12 @@ public class DesignPatternViewMvcImpl extends DesignPatternViewMvc implements De
         mRecyclerAdapter = new DesignPatternRecyclerAdapter(this, viewMvcFactory);
         mRecyclerDesignPatterns.setLayoutManager(new LinearLayoutManager(getContext()));
         mRecyclerDesignPatterns.setAdapter(mRecyclerAdapter);
+
+        mToolbar = findViewById(R.id.toolbar);
+        mToolbarViewMvc = viewMvcFactory.getViewMvc(ToolbarViewMvc.class,mToolbar);
+        mToolbarViewMvc.bindToolbarTextTitle("Desing Patterns");
+        mToolbar.addView(mToolbarViewMvc.getRootView());
+
     }
 
     @Override

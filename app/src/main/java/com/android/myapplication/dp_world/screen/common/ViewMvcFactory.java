@@ -5,6 +5,7 @@ import android.view.ViewGroup;
 
 import androidx.annotation.Nullable;
 
+import com.android.myapplication.dp_world.screen.common.toolbar.ToolbarViewMvc;
 import com.android.myapplication.dp_world.screen.common.views.ViewMvc;
 import com.android.myapplication.dp_world.screen.designpatterncatalogue.catalogueitem.CatalogueListItemViewMvc;
 import com.android.myapplication.dp_world.screen.designpatterncatalogue.catalogueitem.CatalogueListItemViewMvcImpl;
@@ -34,7 +35,9 @@ public class ViewMvcFactory {
             viewMvc = new CatalogueViewMvcImpl(mLayoutInflater, parent, this);
         } else if (mvcViewClass == CatalogueListItemViewMvc.class) {
             viewMvc = new CatalogueListItemViewMvcImpl(mLayoutInflater, parent);
-        } else {
+        } else if (mvcViewClass == ToolbarViewMvc.class){
+            viewMvc = new ToolbarViewMvc(mLayoutInflater,parent);
+        }else {
             throw new IllegalArgumentException("unsupported MVC view class " + mvcViewClass);
         }
 
