@@ -1,20 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary">
 
-    <ImageButton
-        android:id="@+id/btn_back"
+    <FrameLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_centerVertical="true"
-        android:padding="16dp"
-        android:background="@android:color/transparent"
-        android:src="@drawable/ic_back_arrow"
-        android:visibility="gone"/>
+        android:layout_centerVertical="true">
+
+        <ImageButton
+            android:id="@+id/btn_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:padding="16dp"
+            android:src="@drawable/ic_back_arrow"
+            android:visibility="gone" />
+
+        <ImageButton
+            android:id="@+id/btn_hamburger"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:padding="16dp"
+            android:src="@drawable/ic_hamburger"
+            android:visibility="gone" />
+
+    </FrameLayout>
+
 
     <TextView
         android:id="@+id/txt_toolbar_title"
@@ -22,6 +37,6 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:textColor="@android:color/white"
-        android:textSize="20sp"/>
+        android:textSize="20sp" />
 
 </RelativeLayout>

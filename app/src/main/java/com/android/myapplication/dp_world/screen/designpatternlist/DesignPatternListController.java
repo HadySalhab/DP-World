@@ -2,6 +2,7 @@ package com.android.myapplication.dp_world.screen.designpatternlist;
 
 import com.android.myapplication.dp_world.designpattern.DesignPattern;
 import com.android.myapplication.dp_world.designpattern.FetchDesignPatternsUseCase;
+import com.android.myapplication.dp_world.screen.common.navdrawer.DrawerItems;
 import com.android.myapplication.dp_world.screen.common.views.ScreensNavigator;
 import com.android.myapplication.dp_world.screen.common.views.ToastHelper;
 
@@ -41,6 +42,11 @@ public class DesignPatternListController implements DesignPatternViewMvc.Listene
     }
 
     @Override
+    public void onStructrualDrawerItemClicked() {
+
+    }
+
+    @Override
     public void onDesignPatternsFetched(List<DesignPattern> designPatterns) {
         mViewMvc.bindDesignPatterns(designPatterns);
     }
@@ -51,4 +57,12 @@ public class DesignPatternListController implements DesignPatternViewMvc.Listene
     }
 
 
+    public boolean onBackPressed() {
+        if(mViewMvc.isDrawerOpen()){
+            mViewMvc.closeDrawer();
+        }else{
+            return false;
+        }
+        return true;
+    }
 }

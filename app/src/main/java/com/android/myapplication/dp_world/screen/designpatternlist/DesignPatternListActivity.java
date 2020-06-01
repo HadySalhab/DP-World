@@ -1,16 +1,9 @@
 package com.android.myapplication.dp_world.screen.designpatternlist;
 
 import android.os.Bundle;
-import android.widget.Toast;
 
-import com.android.myapplication.dp_world.R;
-import com.android.myapplication.dp_world.designpattern.DesignPattern;
-import com.android.myapplication.dp_world.designpattern.FetchDesignPatternsUseCase;
-import com.android.myapplication.dp_world.screen.common.controllers.BaseActivity;
 import com.android.myapplication.dp_world.screen.common.ViewMvcFactory;
-import com.android.myapplication.dp_world.screen.designpatterncatalogue.CatalogueListActivity;
-
-import java.util.List;
+import com.android.myapplication.dp_world.screen.common.controllers.BaseActivity;
 
 import javax.inject.Inject;
 
@@ -41,5 +34,12 @@ public class DesignPatternListActivity extends BaseActivity {
     protected void onStop() {
         super.onStop();
         mDesignPatternListController.onStop();
+    }
+
+    @Override
+    public void onBackPressed() {
+        if(!mDesignPatternListController.onBackPressed()){
+           super.onBackPressed();
+        }
     }
 }
