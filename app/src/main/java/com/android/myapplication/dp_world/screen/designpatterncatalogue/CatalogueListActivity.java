@@ -27,7 +27,7 @@ public class CatalogueListActivity extends BaseActivity implements CatalogueView
         super.onCreate(savedInstanceState);
         getPresentationComponent().inject(this);
         mViewMvc = mViewMvcFactory.getViewMvc(CatalogueViewMvc.class, null);
-        mViewMvc.registerListener(this);
+
         dpId = getIntent().getIntExtra(DESIGN_PATTERN_ID,0);
         setContentView(mViewMvc.getRootView());
     }
@@ -35,6 +35,7 @@ public class CatalogueListActivity extends BaseActivity implements CatalogueView
     @Override
     protected void onStart() {
         super.onStart();
+        mViewMvc.registerListener(this);
         bindCatalogueItems();
     }
     private void bindCatalogueItems(){
@@ -42,7 +43,18 @@ public class CatalogueListActivity extends BaseActivity implements CatalogueView
     }
 
     @Override
+    protected void onStop() {
+        super.onStop();
+        mViewMvc.unregisterListener(this);
+    }
+
+    @Override
     public void onCatalogueItemClicked(CatalogueItem designPatternCatalogueListItem) {
         Toast.makeText(this, "Catalogue : " + designPatternCatalogueListItem.getName() +", for: "+dpId, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onNavigateUpClicked() {
+        onBackPressed();
     }
 }
