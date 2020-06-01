@@ -10,7 +10,7 @@ public class JsonToGsonConverter {
         mGson = gson;
     }
 
-    public <T> T convertToGson(Class<T> gsonClass, String json) {
-        return mGson.fromJson(json, gsonClass);
+    public <T> T convertToGson(Class<T> targetClass, String jsonSource) {
+        return mGson.fromJson(jsonSource, targetClass);
     }
 }
