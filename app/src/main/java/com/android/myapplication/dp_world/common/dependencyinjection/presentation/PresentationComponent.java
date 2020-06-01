@@ -2,11 +2,12 @@ package com.android.myapplication.dp_world.common.dependencyinjection.presentati
 
 import com.android.myapplication.dp_world.screen.designpatterncatalogue.CatalogueListActivity;
 import com.android.myapplication.dp_world.screen.designpatternlist.DesignPatternListActivity;
+import com.android.myapplication.dp_world.screen.designpatternlist.DesignPatternListFragment;
 
 import dagger.Subcomponent;
 
 @Subcomponent(modules = PresentationModule.class)
 public interface PresentationComponent {
-    void inject(DesignPatternListActivity designPatternListActivity);
+    void inject(DesignPatternListFragment designPatternListActivity);
     void inject(CatalogueListActivity designPatternCatalogueListActivity);
 }

@@ -19,6 +19,6 @@ public class ScreensNavigator {
     }
 
     public void navigateToDesignPatternListAndClearTop() {
-        DesignPatternListActivity.start(mContext);
+        DesignPatternListActivity.startClearTop(mContext);
     }
 }
