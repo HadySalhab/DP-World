@@ -1,5 +1,7 @@
 package com.android.myapplication.dp_world.screen.designpatternlist;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.android.myapplication.dp_world.screen.common.ViewMvcFactory;
@@ -13,6 +15,12 @@ public class DesignPatternListActivity extends BaseActivity {
     ViewMvcFactory mViewMvcFactory;
     @Inject
     DesignPatternListController mDesignPatternListController;
+
+    public static void start(Context context){
+        Intent intent = new Intent(context,DesignPatternListActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        context.startActivity(intent);
+    }
 
 
     @Override

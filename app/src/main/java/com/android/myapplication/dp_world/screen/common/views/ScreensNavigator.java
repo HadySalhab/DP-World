@@ -3,6 +3,7 @@ package com.android.myapplication.dp_world.screen.common.views;
 import android.content.Context;
 
 import com.android.myapplication.dp_world.screen.designpatterncatalogue.CatalogueListActivity;
+import com.android.myapplication.dp_world.screen.designpatternlist.DesignPatternListActivity;
 
 
 public class ScreensNavigator {
@@ -15,5 +16,9 @@ public class ScreensNavigator {
 
     public void toCatalogueList(int designPatternId) {
         CatalogueListActivity.start(mContext, designPatternId);
+    }
+
+    public void navigateToDesignPatternListAndClearTop() {
+        DesignPatternListActivity.start(mContext);
     }
 }

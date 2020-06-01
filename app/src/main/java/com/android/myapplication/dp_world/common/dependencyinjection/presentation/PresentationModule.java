@@ -13,6 +13,7 @@ import com.android.myapplication.dp_world.designpattern.FetchDesignPatternsUseCa
 import com.android.myapplication.dp_world.screen.common.ViewMvcFactory;
 import com.android.myapplication.dp_world.screen.common.views.ScreensNavigator;
 import com.android.myapplication.dp_world.screen.common.views.ToastHelper;
+import com.android.myapplication.dp_world.screen.designpatterncatalogue.CatalogueListController;
 import com.android.myapplication.dp_world.screen.designpatternlist.DesignPatternListController;
 import com.google.gson.Gson;
 import com.techyourchance.threadposter.BackgroundThreadPoster;
@@ -88,6 +89,10 @@ public class PresentationModule {
                                                                ScreensNavigator screensNavigator
     ) {
         return new DesignPatternListController(fetchDesignPatternsUseCase, toastHelper, screensNavigator);
+    }
+    @Provides
+    CatalogueListController getCatalogueListController(ScreensNavigator screensNavigator,Context context){
+        return new CatalogueListController(screensNavigator,context);
     }
 
 }
