@@ -10,8 +10,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".screen.designpatterncatalogue.CatalogueListActivity"></activity>
-        <activity android:name=".screen.designpatternlist.DesignPatternListActivity">
+        <activity android:name=".screen.common.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -1,24 +1,25 @@
 package com.android.myapplication.dp_world.screen.common.controllers;
 
+import android.os.Bundle;
+
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.android.myapplication.dp_world.common.MyApplication;
-import com.android.myapplication.dp_world.common.dependencyinjection.application.ApplicationComponent;
-import com.android.myapplication.dp_world.common.dependencyinjection.presentation.PresentationComponent;
-import com.android.myapplication.dp_world.common.dependencyinjection.presentation.PresentationModule;
+import com.android.myapplication.dp_world.common.dependencyinjection.presentation.activity.ActivityComponent;
+import com.android.myapplication.dp_world.common.dependencyinjection.presentation.fragment.FragmentComponent;
+import com.android.myapplication.dp_world.common.dependencyinjection.presentation.fragment.FragmentModule;
 
 public class BaseFragment extends Fragment {
-    private boolean mIsInjectorUsed;
+    private FragmentComponent mFragmentComponent;
 
-    protected PresentationComponent getPresentationComponent() {
-        if (mIsInjectorUsed) {
-            throw new RuntimeException("there is no need to use injector more than once");
+    protected FragmentComponent getFragmentComponent() {
+        if (mFragmentComponent == null) {
+            mFragmentComponent = getActivityComponent().newFragmentComponent(new FragmentModule(this));
         }
-        mIsInjectorUsed = true;
-        return getApplicationComponent().newPresentationComponent(new PresentationModule(requireActivity()));
+        return mFragmentComponent;
     }
 
-    private ApplicationComponent getApplicationComponent() {
-        return ((MyApplication) requireActivity().getApplication()).getApplicationComponent();
+    private ActivityComponent getActivityComponent() {
+        return ((BaseActivity) requireActivity()).getActivityComponent();
     }
 }

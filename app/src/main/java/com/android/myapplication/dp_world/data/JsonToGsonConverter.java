@@ -1,9 +1,11 @@
 package com.android.myapplication.dp_world.data;
 
+import android.util.Log;
+
 import com.google.gson.Gson;
 
 public class JsonToGsonConverter {
-
+    private static final String TAG = "JsonToGsonConverter";
     private final Gson mGson;
 
     public JsonToGsonConverter(Gson gson) {

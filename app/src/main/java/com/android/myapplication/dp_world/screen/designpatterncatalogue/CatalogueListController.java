@@ -37,7 +37,7 @@ public class CatalogueListController implements CatalogueViewMvc.Listener {
 
     @Override
     public void onNavigateUpClicked() {
-        mScreensNavigator.navigateToDesignPatternListAndClearTop();
+        mScreensNavigator.navigateUp();
     }
 
     public void setDesignPatternId(int designPatternId) {
@@ -46,8 +46,5 @@ public class CatalogueListController implements CatalogueViewMvc.Listener {
 
     public void bindViewMvc(CatalogueViewMvc viewMvc) {
         mViewMvc = viewMvc;
-    }
-    public boolean onBackPressed() {
-            return false;
     }
 }

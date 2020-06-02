@@ -15,8 +15,6 @@ import org.mockito.junit.MockitoJUnitRunner;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.crypto.MacSpi;
-
 import static org.hamcrest.CoreMatchers.is;
 import static org.mockito.Mockito.*;
 
@@ -45,7 +43,7 @@ public class DesignPatternListControllerTest {
     @Before
     public void setup() throws Exception {
         mUseCaseTD = new UseCaseTD();
-        SUT = new DesignPatternListController(mUseCaseTD, mToastHelperMock, mScreensNavigatorMock);
+        SUT = new DesignPatternListController(mUseCaseTD, mToastHelperMock, mScreensNavigatorMock, backPressDispatcher);
         SUT.bindViewMvc(mDesignPatternViewMvcMock);
     }
 

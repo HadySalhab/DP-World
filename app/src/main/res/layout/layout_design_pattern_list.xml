@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".screen.designpatternlist.DesignPatternListActivity">
+    tools:context=".screen.common.main.MainActivity">
 
     <include layout="@layout/element_toolbar"/>
 

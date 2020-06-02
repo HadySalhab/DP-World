@@ -1,25 +1,84 @@
 package com.android.myapplication.dp_world.screen.common.views;
 
-import android.content.Context;
+import android.os.Bundle;
 import android.util.Log;
 
-import com.android.myapplication.dp_world.screen.designpatterncatalogue.CatalogueListActivity;
-import com.android.myapplication.dp_world.screen.designpatternlist.DesignPatternListActivity;
+import androidx.annotation.IdRes;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
+import com.android.myapplication.dp_world.screen.common.controllers.FragmentFrameWrapper;
+import com.android.myapplication.dp_world.screen.designpatterncatalogue.CatalogueListFragment;
+import com.android.myapplication.dp_world.screen.designpatternlist.DesignPatternListFragment;
+import com.ncapdevi.fragnav.FragNavController;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class ScreensNavigator {
+    private final FragmentManager mFragmentManager;
+    private final FragmentFrameWrapper mFragmentFrameWrapper;
+    private  FragNavController mFragNavController;
 
-    private final Context mContext;
+    public ScreensNavigator(FragmentManager fragmentManager, FragmentFrameWrapper fragmentFrameWrapper) {
+        mFragmentManager = fragmentManager;
+        mFragmentFrameWrapper = fragmentFrameWrapper;
+    }
 
-    public ScreensNavigator(Context context) {
-        mContext = context;
+
+    private final FragNavController.RootFragmentListener mRootFragmentListener = new FragNavController.RootFragmentListener() {
+        @Override
+        public int getNumberOfRootFragments() {
+            return 1;
+        }
+
+        @NonNull
+        @Override
+        public Fragment getRootFragment(int index) {
+            switch (index) {
+                case FragNavController.TAB1:
+                    return DesignPatternListFragment.newInstance();
+                default:
+                    throw new IllegalStateException("unsupported tab index: " + index);
+            }
+        }
+    };
+
+    public void init(Bundle savedInstanceState) {
+        mFragNavController = new FragNavController(mFragmentManager,mFragmentFrameWrapper.getFragmentPlaceHolderId());
+        mFragNavController.setRootFragmentListener(mRootFragmentListener);
+        mFragNavController.initialize(FragNavController.TAB1, savedInstanceState);
+    }
+
+    public void onSaveInstanceState(Bundle saveInstanceState) {
+        mFragNavController.onSaveInstanceState(saveInstanceState);
     }
 
     public void toCatalogueList(int designPatternId) {
-        CatalogueListActivity.start(mContext, designPatternId);
+        mFragNavController.pushFragment(CatalogueListFragment.newInstance(designPatternId));
     }
 
-    public void navigateToDesignPatternListAndClearTop() {
-        DesignPatternListActivity.startClearTop(mContext);
+    public void toDesignPatternList() {
+        mFragNavController.pushFragment(DesignPatternListFragment.newInstance());
+    }
+
+    public void navigateUp() {
+        mFragNavController.popFragment();
+    }
+    public void toHome() {
+        mFragNavController.clearStack();
+        mFragNavController.pushFragment(DesignPatternListFragment.newInstance());
+    }
+
+    public boolean navigateBack() {
+        if (mFragNavController.isRootFragment()) {
+            return false;
+        } else {
+            mFragNavController.popFragment();
+            return true;
+        }
     }
 }

@@ -1,25 +1,29 @@
 package com.android.myapplication.dp_world.screen.common.controllers;
 
+import android.os.Bundle;
+
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.myapplication.dp_world.common.MyApplication;
 import com.android.myapplication.dp_world.common.dependencyinjection.application.ApplicationComponent;
-import com.android.myapplication.dp_world.common.dependencyinjection.presentation.PresentationComponent;
-import com.android.myapplication.dp_world.common.dependencyinjection.presentation.PresentationModule;
+import com.android.myapplication.dp_world.common.dependencyinjection.presentation.activity.ActivityComponent;
+import com.android.myapplication.dp_world.common.dependencyinjection.presentation.activity.ActivityModule;
 
 
-public class BaseActivity extends AppCompatActivity {
-    private boolean mIsInjectorUsed;
+public abstract class BaseActivity extends AppCompatActivity {
+    private ActivityComponent mActivityComponent;
 
-    protected PresentationComponent getPresentationComponent() {
-        if (mIsInjectorUsed) {
-            throw new RuntimeException("there is no need to use injector more than once");
+    protected ActivityComponent getActivityComponent() {
+        if (mActivityComponent == null) {
+            mActivityComponent = getApplicationComponent().newActivityComponent(new ActivityModule(this));
         }
-        mIsInjectorUsed = true;
-        return getApplicationComponent().newPresentationComponent(new PresentationModule(this));
+        return mActivityComponent;
     }
 
     private ApplicationComponent getApplicationComponent() {
         return ((MyApplication) getApplication()).getApplicationComponent();
     }
+
+
 }

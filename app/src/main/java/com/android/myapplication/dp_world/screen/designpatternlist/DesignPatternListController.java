@@ -2,13 +2,15 @@ package com.android.myapplication.dp_world.screen.designpatternlist;
 
 import com.android.myapplication.dp_world.designpattern.DesignPattern;
 import com.android.myapplication.dp_world.designpattern.FetchDesignPatternsUseCase;
-import com.android.myapplication.dp_world.screen.common.navdrawer.DrawerItems;
+import com.android.myapplication.dp_world.screen.common.controllers.BackPressDispatcher;
+import com.android.myapplication.dp_world.screen.common.controllers.BackPressListener;
 import com.android.myapplication.dp_world.screen.common.views.ScreensNavigator;
 import com.android.myapplication.dp_world.screen.common.views.ToastHelper;
 
 import java.util.List;
 
-public class DesignPatternListController implements DesignPatternViewMvc.Listener,FetchDesignPatternsUseCase.Listener {
+public class DesignPatternListController implements DesignPatternViewMvc.Listener,
+        FetchDesignPatternsUseCase.Listener{
 
     private DesignPatternViewMvc mViewMvc;
     private final FetchDesignPatternsUseCase mFetchDesignPatternsUseCase;
@@ -21,7 +23,8 @@ public class DesignPatternListController implements DesignPatternViewMvc.Listene
         mToastHelper = toastHelper;
         mScreensNavigator = screensNavigator;
     }
-    public void bindViewMvc(DesignPatternViewMvc viewMvc){
+
+    public void bindViewMvc(DesignPatternViewMvc viewMvc) {
         mViewMvc = viewMvc;
     }
 
@@ -41,10 +44,6 @@ public class DesignPatternListController implements DesignPatternViewMvc.Listene
         mScreensNavigator.toCatalogueList(designPattern.getId());
     }
 
-    @Override
-    public void onStructrualDrawerItemClicked() {
-
-    }
 
     @Override
     public void onDesignPatternsFetched(List<DesignPattern> designPatterns) {
@@ -57,12 +56,4 @@ public class DesignPatternListController implements DesignPatternViewMvc.Listene
     }
 
 
-    public boolean onBackPressed() {
-        if(mViewMvc.isDrawerOpen()){
-            mViewMvc.closeDrawer();
-            return true;
-        }else{
-            return false;
-        }
-    }
 }

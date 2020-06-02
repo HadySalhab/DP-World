@@ -1,20 +1,21 @@
-package com.android.myapplication.dp_world.common.dependencyinjection.presentation;
+package com.android.myapplication.dp_world.common.dependencyinjection.presentation.activity;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.res.AssetManager;
 import android.view.LayoutInflater;
 
+import androidx.annotation.IdRes;
 import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
 
 import com.android.myapplication.dp_world.data.AssetStreamReader;
 import com.android.myapplication.dp_world.data.JsonToGsonConverter;
 import com.android.myapplication.dp_world.designpattern.FetchDesignPatternsUseCase;
 import com.android.myapplication.dp_world.screen.common.ViewMvcFactory;
+import com.android.myapplication.dp_world.screen.common.controllers.FragmentFrameWrapper;
+import com.android.myapplication.dp_world.screen.common.navdrawer.NavDrawerHelper;
 import com.android.myapplication.dp_world.screen.common.views.ScreensNavigator;
 import com.android.myapplication.dp_world.screen.common.views.ToastHelper;
-import com.android.myapplication.dp_world.screen.designpatterncatalogue.CatalogueListController;
-import com.android.myapplication.dp_world.screen.designpatternlist.DesignPatternListController;
 import com.google.gson.Gson;
 import com.techyourchance.threadposter.BackgroundThreadPoster;
 import com.techyourchance.threadposter.UiThreadPoster;
@@ -23,10 +24,10 @@ import dagger.Module;
 import dagger.Provides;
 
 @Module
-public class PresentationModule {
+public class ActivityModule {
     private final FragmentActivity mActivity;
 
-    public PresentationModule(FragmentActivity activity) {
+    public ActivityModule(FragmentActivity activity) {
         mActivity = activity;
     }
 
@@ -36,23 +37,38 @@ public class PresentationModule {
     }
 
     @Provides
-    Activity getActivity() {
+    FragmentActivity getActivity() {
         return mActivity;
     }
 
     @Provides
-    Context getContext(Activity activity) {
+    FragmentManager getSupportFragmentManager(FragmentActivity activity) {
+        return activity.getSupportFragmentManager();
+    }
+
+    @Provides
+    FragmentFrameWrapper getFragmentFrameWrapper(FragmentActivity activity) {
+        return (FragmentFrameWrapper) activity;
+    }
+
+    @Provides
+    Context getContext(FragmentActivity activity) {
         return activity;
     }
 
     @Provides
-    AssetManager getAssetManager(Activity activity) {
+    AssetManager getAssetManager(FragmentActivity activity) {
         return activity.getAssets();
     }
 
     @Provides
-    ViewMvcFactory getViewMvcFactory(LayoutInflater layoutInflater) {
-        return new ViewMvcFactory(layoutInflater);
+    NavDrawerHelper getNavDrawerHelper(FragmentActivity activity) {
+        return (NavDrawerHelper) activity;
+    }
+
+    @Provides
+    ViewMvcFactory getViewMvcFactory(LayoutInflater layoutInflater, NavDrawerHelper navDrawerHelper) {
+        return new ViewMvcFactory(layoutInflater, navDrawerHelper);
     }
 
     @Provides
@@ -79,20 +95,9 @@ public class PresentationModule {
     }
 
     @Provides
-    ScreensNavigator getScreensNavigator(Context context) {
-        return new ScreensNavigator(context);
-    }
-
-    @Provides
-    DesignPatternListController getDesignPatternListController(FetchDesignPatternsUseCase fetchDesignPatternsUseCase,
-                                                               ToastHelper toastHelper,
-                                                               ScreensNavigator screensNavigator
-    ) {
-        return new DesignPatternListController(fetchDesignPatternsUseCase, toastHelper, screensNavigator);
-    }
-    @Provides
-    CatalogueListController getCatalogueListController(ScreensNavigator screensNavigator,Context context){
-        return new CatalogueListController(screensNavigator,context);
+    @ActivityScope
+    ScreensNavigator getScreensNavigator(FragmentManager fragmentManager, FragmentFrameWrapper fragmentFrameWrapper) {
+        return new ScreensNavigator(fragmentManager, fragmentFrameWrapper);
     }
 
 }
