@@ -60,9 +60,9 @@ public class DesignPatternListController implements DesignPatternViewMvc.Listene
     public boolean onBackPressed() {
         if(mViewMvc.isDrawerOpen()){
             mViewMvc.closeDrawer();
+            return true;
         }else{
             return false;
         }
-        return true;
     }
 }

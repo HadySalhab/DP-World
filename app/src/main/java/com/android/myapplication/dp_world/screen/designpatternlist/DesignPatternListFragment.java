@@ -28,7 +28,7 @@ public class DesignPatternListFragment  extends BaseFragment implements BackPres
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
          super.onCreateView(inflater, container, savedInstanceState);
         getPresentationComponent().inject(this);
-        DesignPatternViewMvc mViewMvc = mViewMvcFactory.getViewMvc(DesignPatternViewMvc.class, null);
+        DesignPatternViewMvc mViewMvc = mViewMvcFactory.getViewMvc(DesignPatternViewMvc.class, container);
         mDesignPatternListController.bindViewMvc(mViewMvc);
         return (mViewMvc.getRootView());
     }

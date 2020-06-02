@@ -47,4 +47,7 @@ public class CatalogueListController implements CatalogueViewMvc.Listener {
     public void bindViewMvc(CatalogueViewMvc viewMvc) {
         mViewMvc = viewMvc;
     }
+    public boolean onBackPressed() {
+            return false;
+    }
 }
