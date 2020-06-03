@@ -8,7 +8,7 @@ import com.android.myapplication.dp_world.screen.common.ViewMvcFactory;
 import com.android.myapplication.dp_world.screen.common.controllers.BackPressListener;
 import com.android.myapplication.dp_world.screen.common.controllers.BaseActivity;
 import com.android.myapplication.dp_world.screen.common.controllers.FragmentFrameWrapper;
-import com.android.myapplication.dp_world.screen.common.navdrawer.NavDrawerHelper;
+import com.android.myapplication.dp_world.screen.common.navdrawer.NavDrawerController;
 import com.android.myapplication.dp_world.screen.common.navdrawer.NavDrawerViewMvc;
 import com.android.myapplication.dp_world.screen.common.views.ScreensNavigator;
 
@@ -19,7 +19,7 @@ import javax.inject.Inject;
 
 public class MainActivity extends BaseActivity implements
         FragmentFrameWrapper,
-        NavDrawerHelper,
+        NavDrawerController,
         NavDrawerViewMvc.Listener {
 
     private final Set<BackPressListener> mBackPressedListeners = new HashSet<>();
@@ -49,6 +49,7 @@ public class MainActivity extends BaseActivity implements
     protected void onStart() {
         super.onStart();
         mViewMvc.registerListener(this);
+        lockDrawer();
     }
 
     @Override
@@ -61,10 +62,9 @@ public class MainActivity extends BaseActivity implements
     public void onBackPressed() {
         if (isDrawerOpen()) {
             closeDrawer();
-        }
-        else if (mScreensNavigator.canScreensNavigatorHandleBackPress()) {
+        } else if (mScreensNavigator.canScreensNavigatorHandleBackPress()) {
             mScreensNavigator.handleBackPress();
-        }else{
+        } else {
             super.onBackPressed();
         }
     }
@@ -73,6 +73,7 @@ public class MainActivity extends BaseActivity implements
     public int getFragmentPlaceHolderId() {
         return mViewMvc.getFragmentPlaceHoldeId();
     }
+
 
     @Override
     public void onStructuralItemClicked() {
@@ -92,5 +93,10 @@ public class MainActivity extends BaseActivity implements
     @Override
     public boolean isDrawerOpen() {
         return mViewMvc.isDrawerOpen();
+    }
+
+    @Override
+    public void lockDrawer() {
+        mViewMvc.lockDrawer();
     }
 }

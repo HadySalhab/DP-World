@@ -5,7 +5,7 @@ import android.view.ViewGroup;
 
 import androidx.annotation.Nullable;
 
-import com.android.myapplication.dp_world.screen.common.navdrawer.NavDrawerHelper;
+import com.android.myapplication.dp_world.screen.common.navdrawer.NavDrawerController;
 import com.android.myapplication.dp_world.screen.common.navdrawer.NavDrawerViewMvc;
 import com.android.myapplication.dp_world.screen.common.navdrawer.NavDrawerViewMvcImpl;
 import com.android.myapplication.dp_world.screen.common.toolbar.ToolbarViewMvc;
@@ -21,34 +21,31 @@ import com.android.myapplication.dp_world.screen.designpatternlist.DesignPattern
 
 public class ViewMvcFactory {
     private final LayoutInflater mLayoutInflater;
-    private final NavDrawerHelper mNavDrawerHelper;
+    private final NavDrawerController mNavDrawerController;
 
-    public ViewMvcFactory(LayoutInflater layoutInflater, NavDrawerHelper navDrawerHelper) {
+    public ViewMvcFactory(LayoutInflater layoutInflater, NavDrawerController navDrawerHelper) {
         mLayoutInflater = layoutInflater;
-        mNavDrawerHelper = navDrawerHelper;
+        mNavDrawerController = navDrawerHelper;
     }
 
     public <T extends ViewMvc> T getViewMvc(Class<T> mvcViewClass, @Nullable ViewGroup parent) {
 
         ViewMvc viewMvc;
-
-        if (mvcViewClass == DesignPatternViewMvc.class) {
-            viewMvc = new DesignPatternViewMvcImpl(mLayoutInflater, parent, mNavDrawerHelper, this);
-        } else if (mvcViewClass == DesignPatternListItemViewMvc.class) {
+        if (DesignPatternViewMvc.class.equals(mvcViewClass)) {
+            viewMvc = new DesignPatternViewMvcImpl(mLayoutInflater, parent, mNavDrawerController, this);
+        } else if (DesignPatternListItemViewMvc.class.equals(mvcViewClass)) {
             viewMvc = new DesignPatternListItemViewMvcImpl(mLayoutInflater, parent);
-        } else if (mvcViewClass == CatalogueViewMvc.class) {
+        } else if (CatalogueViewMvc.class.equals(mvcViewClass)) {
             viewMvc = new CatalogueViewMvcImpl(mLayoutInflater, parent, this);
-        } else if (mvcViewClass == CatalogueListItemViewMvc.class) {
+        } else if (CatalogueListItemViewMvc.class.equals(mvcViewClass)) {
             viewMvc = new CatalogueListItemViewMvcImpl(mLayoutInflater, parent);
-        } else if (mvcViewClass == ToolbarViewMvc.class) {
+        } else if (ToolbarViewMvc.class.equals(mvcViewClass)) {
             viewMvc = new ToolbarViewMvc(mLayoutInflater, parent);
-        } else if (mvcViewClass == NavDrawerViewMvc.class) {
+        } else if (NavDrawerViewMvc.class.equals(mvcViewClass)) {
             viewMvc = new NavDrawerViewMvcImpl(mLayoutInflater, parent);
         } else {
             throw new IllegalArgumentException("unsupported MVC view class " + mvcViewClass);
         }
-
-        //noinspection unchecked
         return (T) viewMvc;
     }
 }

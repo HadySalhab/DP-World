@@ -13,7 +13,7 @@ import com.android.myapplication.dp_world.data.JsonToGsonConverter;
 import com.android.myapplication.dp_world.designpattern.FetchDesignPatternsUseCase;
 import com.android.myapplication.dp_world.screen.common.ViewMvcFactory;
 import com.android.myapplication.dp_world.screen.common.controllers.FragmentFrameWrapper;
-import com.android.myapplication.dp_world.screen.common.navdrawer.NavDrawerHelper;
+import com.android.myapplication.dp_world.screen.common.navdrawer.NavDrawerController;
 import com.android.myapplication.dp_world.screen.common.views.ScreensNavigator;
 import com.android.myapplication.dp_world.screen.common.views.ToastHelper;
 import com.google.gson.Gson;
@@ -62,12 +62,12 @@ public class ActivityModule {
     }
 
     @Provides
-    NavDrawerHelper getNavDrawerHelper(FragmentActivity activity) {
-        return (NavDrawerHelper) activity;
+    NavDrawerController getNavDrawerHelper(FragmentActivity activity) {
+        return (NavDrawerController) activity;
     }
 
     @Provides
-    ViewMvcFactory getViewMvcFactory(LayoutInflater layoutInflater, NavDrawerHelper navDrawerHelper) {
+    ViewMvcFactory getViewMvcFactory(LayoutInflater layoutInflater, NavDrawerController navDrawerHelper) {
         return new ViewMvcFactory(layoutInflater, navDrawerHelper);
     }
 

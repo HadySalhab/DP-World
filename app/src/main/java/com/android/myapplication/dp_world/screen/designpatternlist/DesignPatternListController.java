@@ -18,7 +18,8 @@ public class DesignPatternListController implements DesignPatternViewMvc.Listene
     private final ScreensNavigator mScreensNavigator;
 
     public DesignPatternListController(FetchDesignPatternsUseCase fetchDesignPatternsUseCase,
-                                       ToastHelper toastHelper, ScreensNavigator screensNavigator) {
+                                       ToastHelper toastHelper,
+                                       ScreensNavigator screensNavigator) {
         mFetchDesignPatternsUseCase = fetchDesignPatternsUseCase;
         mToastHelper = toastHelper;
         mScreensNavigator = screensNavigator;

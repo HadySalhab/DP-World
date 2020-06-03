@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.android.myapplication.dp_world.R;
 import com.android.myapplication.dp_world.designpattern.DesignPattern;
 import com.android.myapplication.dp_world.screen.common.ViewMvcFactory;
-import com.android.myapplication.dp_world.screen.common.navdrawer.NavDrawerHelper;
+import com.android.myapplication.dp_world.screen.common.navdrawer.NavDrawerController;
 import com.android.myapplication.dp_world.screen.common.toolbar.ToolbarViewMvc;
 
 import java.util.List;
@@ -20,12 +20,12 @@ public class DesignPatternViewMvcImpl extends DesignPatternViewMvc implements De
 
     private final ToolbarViewMvc mToolbarViewMvc;
     private final Toolbar mToolbar;
-    private final NavDrawerHelper mNavDrawerHelper;
+    private final NavDrawerController mNavDrawerController;
     private RecyclerView mRecyclerDesignPatterns;
     private DesignPatternRecyclerAdapter mRecyclerAdapter;
 
-    public DesignPatternViewMvcImpl(LayoutInflater inflater, @Nullable ViewGroup parent, NavDrawerHelper navDrawerHelper, ViewMvcFactory viewMvcFactory) {
-        mNavDrawerHelper = navDrawerHelper;
+    public DesignPatternViewMvcImpl(LayoutInflater inflater, @Nullable ViewGroup parent, NavDrawerController navDrawerController, ViewMvcFactory viewMvcFactory) {
+        mNavDrawerController = navDrawerController;
         setRootView(inflater.inflate(R.layout.layout_design_pattern_list, parent, false));
         mRecyclerDesignPatterns = findViewById(R.id.recyclerView_desing_pattern);
         mRecyclerAdapter = new DesignPatternRecyclerAdapter(this, viewMvcFactory);
@@ -44,7 +44,7 @@ public class DesignPatternViewMvcImpl extends DesignPatternViewMvc implements De
         mToolbarViewMvc.enableHamburgerButtonAndListen(new ToolbarViewMvc.HamburgerClickListener() {
             @Override
             public void onHamburgerClicked() {
-                mNavDrawerHelper.openDrawer();
+                mNavDrawerController.openDrawer();
             }
         });
     }
