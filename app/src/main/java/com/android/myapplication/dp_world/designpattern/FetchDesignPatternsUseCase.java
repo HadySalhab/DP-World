@@ -32,7 +32,7 @@ public class FetchDesignPatternsUseCase extends BaseObservable<FetchDesignPatter
             public void onDesignPatternDataRead(String json) {
                 DesignPatternsResponseSchema designPatternsResponseSchema =
                         mJsonToGsonConverter.convertToGson(DesignPatternsResponseSchema.class, json);
-                List<DesignPattern> designPatterns = getDesignPatternListFromResponseSchema(designPatternsResponseSchema);
+                List<DesignPattern> designPatterns = getDesignPatternListFromResult(designPatternsResponseSchema);
                 notifySuccess(designPatterns);
             }
 
@@ -40,10 +40,11 @@ public class FetchDesignPatternsUseCase extends BaseObservable<FetchDesignPatter
             public void onDesignPatternDataReadFailed(String message) {
                 notifyFailure(message);
             }
+
         });
     }
 
-    private List<DesignPattern> getDesignPatternListFromResponseSchema(DesignPatternsResponseSchema designPatternsResponseSchema) {
+    private List<DesignPattern> getDesignPatternListFromResult(DesignPatternsResponseSchema designPatternsResponseSchema) {
         List<DesignPattern> designPatterns = new ArrayList<>();
         for (DesignPatternSchema designPatternSchema : designPatternsResponseSchema.getDesignPatterns()) {
             designPatterns.add(new DesignPattern(
