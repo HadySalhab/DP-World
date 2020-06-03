@@ -21,7 +21,7 @@ import java.util.List;
 public class ScreensNavigator {
     private final FragmentManager mFragmentManager;
     private final FragmentFrameWrapper mFragmentFrameWrapper;
-    private  FragNavController mFragNavController;
+    private FragNavController mFragNavController;
 
     public ScreensNavigator(FragmentManager fragmentManager, FragmentFrameWrapper fragmentFrameWrapper) {
         mFragmentManager = fragmentManager;
@@ -48,7 +48,7 @@ public class ScreensNavigator {
     };
 
     public void init(Bundle savedInstanceState) {
-        mFragNavController = new FragNavController(mFragmentManager,mFragmentFrameWrapper.getFragmentPlaceHolderId());
+        mFragNavController = new FragNavController(mFragmentManager, mFragmentFrameWrapper.getFragmentPlaceHolderId());
         mFragNavController.setRootFragmentListener(mRootFragmentListener);
         mFragNavController.initialize(FragNavController.TAB1, savedInstanceState);
     }
@@ -68,17 +68,21 @@ public class ScreensNavigator {
     public void navigateUp() {
         mFragNavController.popFragment();
     }
+
     public void toHome() {
         mFragNavController.clearStack();
         mFragNavController.pushFragment(DesignPatternListFragment.newInstance());
     }
 
-    public boolean navigateBack() {
+    public boolean canScreensNavigatorHandleBackPress() {
         if (mFragNavController.isRootFragment()) {
             return false;
         } else {
-            mFragNavController.popFragment();
             return true;
         }
+    }
+
+    public void handleBackPress() {
+        mFragNavController.popFragment();
     }
 }

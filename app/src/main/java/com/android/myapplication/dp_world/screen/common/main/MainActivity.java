@@ -61,7 +61,10 @@ public class MainActivity extends BaseActivity implements
     public void onBackPressed() {
         if (isDrawerOpen()) {
             closeDrawer();
-        } else if (!mScreensNavigator.navigateBack()) {
+        }
+        else if (mScreensNavigator.canScreensNavigatorHandleBackPress()) {
+            mScreensNavigator.handleBackPress();
+        }else{
             super.onBackPressed();
         }
     }
