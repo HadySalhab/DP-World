@@ -13,14 +13,19 @@ import com.android.myapplication.dp_world.screen.common.controllers.BaseFragment
 
 import javax.inject.Inject;
 
-public class DesignPatternListFragment  extends BaseFragment  {
+public class BaseDesignPatternsFragment extends BaseFragment  {
     @Inject
     ViewMvcFactory mViewMvcFactory;
     @Inject
-    DesignPatternListController mDesignPatternListController;
+    BaseDesignPatternsController mBaseDesignPatternsController;
+    public static final String DESIGN_PATTERN_FILE_NAME = "DESIGN_PATTERN_FILE_NAME";
 
-    public static Fragment newInstance() {
-        return new DesignPatternListFragment();
+    public static Fragment newInstance(String fileName) {
+        Bundle bundle = new Bundle();
+        bundle.putString(DESIGN_PATTERN_FILE_NAME,fileName);
+        BaseDesignPatternsFragment baseDesignPatternsFragment =  new BaseDesignPatternsFragment();
+        baseDesignPatternsFragment.setArguments(bundle);
+        return baseDesignPatternsFragment;
     }
 
     @Override
@@ -33,21 +38,21 @@ public class DesignPatternListFragment  extends BaseFragment  {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
          super.onCreateView(inflater, container, savedInstanceState);
-
         DesignPatternViewMvc mViewMvc = mViewMvcFactory.getViewMvc(DesignPatternViewMvc.class, container);
-        mDesignPatternListController.bindViewMvc(mViewMvc);
+        mBaseDesignPatternsController.bindViewMvc(mViewMvc);
+        mBaseDesignPatternsController.bindDesignPatternFileName(getArguments().getString(DESIGN_PATTERN_FILE_NAME));
         return (mViewMvc.getRootView());
     }
 
     @Override
     public void onStart() {
         super.onStart();
-        mDesignPatternListController.onStart();
+        mBaseDesignPatternsController.onStart();
     }
 
     @Override
     public void onStop() {
         super.onStop();
-        mDesignPatternListController.onStop();
+        mBaseDesignPatternsController.onStop();
     }
 }

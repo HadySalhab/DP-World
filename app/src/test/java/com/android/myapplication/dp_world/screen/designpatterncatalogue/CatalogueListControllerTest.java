@@ -32,7 +32,7 @@ public class CatalogueListControllerTest {
 
     @Before
     public void setup() throws Exception {
-        SUT = new CatalogueListController(mScreensNavigatorMock, mContextMock, backPressDispatcher);
+        SUT = new CatalogueListController(mScreensNavigatorMock, mContextMock);
         SUT.bindViewMvc(mViewMvc);
     }
 
@@ -64,14 +64,7 @@ public class CatalogueListControllerTest {
         verify(mViewMvc).unregisterListener(eq(SUT));
     }
 
-    @Test
-    public void onNavigateUpClicked_navigateToDesignPatternListScreenAndClearTop() {
-        // Arrange
-        // Act
-        SUT.onNavigateUpClicked();
-        // Assert
-        verify(mScreensNavigatorMock).navigateToDesignPatternListAndClearTop();
-    }
+
 
     // endregion helper methods --------------------------------------------------------------------
 

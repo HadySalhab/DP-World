@@ -26,8 +26,8 @@ public class FetchDesignPatternsUseCase extends BaseObservable<FetchDesignPatter
         mJsonToGsonConverter = jsonToGsonConverter;
     }
 
-    public void fetchDesignPatternsAndNotify() {
-        mAssetStreamReader.readAssetDataAndNotify(Constants.ASSET_FILE_NAME, new AssetStreamReader.Listener() {
+    public void fetchDesignPatternsAndNotify(String fileName) {
+        mAssetStreamReader.readAssetDataAndNotify(fileName, new AssetStreamReader.Listener() {
             @Override
             public void onDesignPatternDataRead(String json) {
                 DesignPatternsResponseSchema designPatternsResponseSchema =

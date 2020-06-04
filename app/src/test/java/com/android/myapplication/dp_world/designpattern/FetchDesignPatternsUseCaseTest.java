@@ -27,7 +27,7 @@ public class FetchDesignPatternsUseCaseTest {
 
     // region constants ----------------------------------------------------------------------------
     private static final String DESIGN_PATTERN_JSON = "DESIGN_PATTERN_JSON";
-    private static final String FILE_NAME = "DesignPatterns.json";
+    private static final String FILE_NAME = "CreationalPatterns.json";
     private static final int ID = 1;
     private static final String TITLE = "title";
     private static final String DESCRIPTION = "description";
@@ -58,7 +58,7 @@ public class FetchDesignPatternsUseCaseTest {
     public void fetchDesignPatterns_correctFileNamePassedToAssetReader() {
         // Arrange
         // Act
-        SUT.fetchDesignPatternsAndNotify();
+        SUT.fetchDesignPatternsAndNotify(FILE_NAME);
         // Assert
         verify(mAssetStreamReaderMock).readAssetDataAndNotify(eq(FILE_NAME), any());
     }
@@ -68,7 +68,7 @@ public class FetchDesignPatternsUseCaseTest {
         // Arrange
         success();
         // Act
-        SUT.fetchDesignPatternsAndNotify();
+        SUT.fetchDesignPatternsAndNotify(FILE_NAME);
         // Assert
         verify(mJsonToGsonConverterMock).convertToGson(
                 eq(DesignPatternsResponseSchema.class),
@@ -82,7 +82,7 @@ public class FetchDesignPatternsUseCaseTest {
         SUT.registerListener(mListener1);
         SUT.registerListener(mListener2);
         // Act
-        SUT.fetchDesignPatternsAndNotify();
+        SUT.fetchDesignPatternsAndNotify(FILE_NAME);
         // Assert
         verify(mListener1).onDesignPatternsFetched(eq(getDesignPatternList()));
     }
@@ -95,7 +95,7 @@ public class FetchDesignPatternsUseCaseTest {
         SUT.registerListener(mListener2);
         SUT.unregisterListener(mListener2);
         // Act
-        SUT.fetchDesignPatternsAndNotify();
+        SUT.fetchDesignPatternsAndNotify(FILE_NAME);
         // Assert
         verifyNoMoreInteractions(mListener2);
     }
@@ -106,7 +106,7 @@ public class FetchDesignPatternsUseCaseTest {
         failure();
         SUT.registerListener(mListener1);
         // Act
-        SUT.fetchDesignPatternsAndNotify();
+        SUT.fetchDesignPatternsAndNotify(FILE_NAME);
         // Assert
         verify(mListener1).onDesignPatternsFetchFailed(eq(ERROR_MESSAGE));
     }

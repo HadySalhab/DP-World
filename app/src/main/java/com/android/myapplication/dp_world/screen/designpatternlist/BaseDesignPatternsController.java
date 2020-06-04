@@ -1,25 +1,25 @@
 package com.android.myapplication.dp_world.screen.designpatternlist;
 
+import com.android.myapplication.dp_world.common.Constants;
 import com.android.myapplication.dp_world.designpattern.DesignPattern;
 import com.android.myapplication.dp_world.designpattern.FetchDesignPatternsUseCase;
-import com.android.myapplication.dp_world.screen.common.controllers.BackPressDispatcher;
-import com.android.myapplication.dp_world.screen.common.controllers.BackPressListener;
 import com.android.myapplication.dp_world.screen.common.views.ScreensNavigator;
 import com.android.myapplication.dp_world.screen.common.views.ToastHelper;
 
 import java.util.List;
 
-public class DesignPatternListController implements DesignPatternViewMvc.Listener,
+public  class BaseDesignPatternsController implements DesignPatternViewMvc.Listener,
         FetchDesignPatternsUseCase.Listener{
 
+    private String mFileName;
     private DesignPatternViewMvc mViewMvc;
     private final FetchDesignPatternsUseCase mFetchDesignPatternsUseCase;
     private final ToastHelper mToastHelper;
     private final ScreensNavigator mScreensNavigator;
 
-    public DesignPatternListController(FetchDesignPatternsUseCase fetchDesignPatternsUseCase,
-                                       ToastHelper toastHelper,
-                                       ScreensNavigator screensNavigator) {
+    public BaseDesignPatternsController(FetchDesignPatternsUseCase fetchDesignPatternsUseCase,
+                                        ToastHelper toastHelper,
+                                        ScreensNavigator screensNavigator) {
         mFetchDesignPatternsUseCase = fetchDesignPatternsUseCase;
         mToastHelper = toastHelper;
         mScreensNavigator = screensNavigator;
@@ -32,8 +32,9 @@ public class DesignPatternListController implements DesignPatternViewMvc.Listene
     public void onStart() {
         mViewMvc.registerListener(this);
         mFetchDesignPatternsUseCase.registerListener(this);
-        mFetchDesignPatternsUseCase.fetchDesignPatternsAndNotify();
+        mFetchDesignPatternsUseCase.fetchDesignPatternsAndNotify(mFileName);
     }
+
 
     public void onStop() {
         mViewMvc.unregisterListener(this);
@@ -57,4 +58,7 @@ public class DesignPatternListController implements DesignPatternViewMvc.Listene
     }
 
 
+    public void bindDesignPatternFileName(String fileName) {
+        mFileName = fileName;
+    }
 }

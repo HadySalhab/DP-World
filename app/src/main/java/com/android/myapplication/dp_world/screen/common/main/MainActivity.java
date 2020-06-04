@@ -2,15 +2,20 @@ package com.android.myapplication.dp_world.screen.common.main;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
+import com.android.myapplication.dp_world.designpattern.FileNameDispatcher;
 import com.android.myapplication.dp_world.screen.common.ViewMvcFactory;
 import com.android.myapplication.dp_world.screen.common.controllers.BackPressListener;
 import com.android.myapplication.dp_world.screen.common.controllers.BaseActivity;
 import com.android.myapplication.dp_world.screen.common.controllers.FragmentFrameWrapper;
+import com.android.myapplication.dp_world.screen.common.navdrawer.DrawerItems;
 import com.android.myapplication.dp_world.screen.common.navdrawer.NavDrawerController;
 import com.android.myapplication.dp_world.screen.common.navdrawer.NavDrawerViewMvc;
 import com.android.myapplication.dp_world.screen.common.views.ScreensNavigator;
+import com.ncapdevi.fragnav.FragNavController;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -40,7 +45,7 @@ public class MainActivity extends BaseActivity implements
     }
 
     @Override
-    public void onSaveInstanceState(Bundle saveInstanceState) {
+    public void onSaveInstanceState(@Nullable Bundle saveInstanceState) {
         super.onSaveInstanceState(saveInstanceState);
         mScreensNavigator.onSaveInstanceState(saveInstanceState);
     }
@@ -49,7 +54,6 @@ public class MainActivity extends BaseActivity implements
     protected void onStart() {
         super.onStart();
         mViewMvc.registerListener(this);
-        lockDrawer();
     }
 
     @Override
@@ -71,13 +75,13 @@ public class MainActivity extends BaseActivity implements
 
     @Override
     public int getFragmentPlaceHolderId() {
-        return mViewMvc.getFragmentPlaceHoldeId();
+        return mViewMvc.getFragmentPlaceHolderId();
     }
 
 
     @Override
-    public void onStructuralItemClicked() {
-
+    public void onDrawerItemClicked(DrawerItems item) {
+        mScreensNavigator.switchTab(item);
     }
 
     @Override

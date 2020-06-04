@@ -5,11 +5,10 @@ import android.content.Context;
 import androidx.fragment.app.Fragment;
 
 import com.android.myapplication.dp_world.designpattern.FetchDesignPatternsUseCase;
-import com.android.myapplication.dp_world.screen.common.controllers.BackPressDispatcher;
 import com.android.myapplication.dp_world.screen.common.views.ScreensNavigator;
 import com.android.myapplication.dp_world.screen.common.views.ToastHelper;
 import com.android.myapplication.dp_world.screen.designpatterncatalogue.CatalogueListController;
-import com.android.myapplication.dp_world.screen.designpatternlist.DesignPatternListController;
+import com.android.myapplication.dp_world.screen.designpatternlist.BaseDesignPatternsController;
 
 import dagger.Module;
 import dagger.Provides;
@@ -23,11 +22,11 @@ public class FragmentModule {
     }
 
     @Provides
-    DesignPatternListController getDesignPatternListController(FetchDesignPatternsUseCase fetchDesignPatternsUseCase,
-                                                               ToastHelper toastHelper,
-                                                               ScreensNavigator screensNavigator
+    BaseDesignPatternsController getDesignPatternListController(FetchDesignPatternsUseCase fetchDesignPatternsUseCase,
+                                                                ToastHelper toastHelper,
+                                                                ScreensNavigator screensNavigator
     ) {
-        return new DesignPatternListController(fetchDesignPatternsUseCase, toastHelper, screensNavigator);
+        return new BaseDesignPatternsController(fetchDesignPatternsUseCase, toastHelper, screensNavigator);
     }
 
     @Provides

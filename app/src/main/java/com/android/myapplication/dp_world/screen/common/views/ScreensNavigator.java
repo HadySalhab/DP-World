@@ -1,38 +1,37 @@
 package com.android.myapplication.dp_world.screen.common.views;
 
 import android.os.Bundle;
-import android.util.Log;
 
-import androidx.annotation.IdRes;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
+import com.android.myapplication.dp_world.common.Constants;
+import com.android.myapplication.dp_world.designpattern.FileNameDispatcher;
 import com.android.myapplication.dp_world.screen.common.controllers.FragmentFrameWrapper;
+import com.android.myapplication.dp_world.screen.common.navdrawer.DrawerItems;
 import com.android.myapplication.dp_world.screen.designpatterncatalogue.CatalogueListFragment;
-import com.android.myapplication.dp_world.screen.designpatternlist.DesignPatternListFragment;
+import com.android.myapplication.dp_world.screen.designpatternlist.BaseDesignPatternsFragment;
 import com.ncapdevi.fragnav.FragNavController;
-
-import java.util.ArrayList;
-import java.util.List;
 
 
 public class ScreensNavigator {
     private final FragmentManager mFragmentManager;
     private final FragmentFrameWrapper mFragmentFrameWrapper;
     private FragNavController mFragNavController;
+    private final FileNameDispatcher mFileNameDispatcher;
 
-    public ScreensNavigator(FragmentManager fragmentManager, FragmentFrameWrapper fragmentFrameWrapper) {
+    public ScreensNavigator(FragmentManager fragmentManager, FragmentFrameWrapper fragmentFrameWrapper, FileNameDispatcher fileNameDispatcher) {
         mFragmentManager = fragmentManager;
         mFragmentFrameWrapper = fragmentFrameWrapper;
+        mFileNameDispatcher = fileNameDispatcher;
     }
 
 
     private final FragNavController.RootFragmentListener mRootFragmentListener = new FragNavController.RootFragmentListener() {
         @Override
         public int getNumberOfRootFragments() {
-            return 1;
+            return 3;
         }
 
         @NonNull
@@ -40,12 +39,30 @@ public class ScreensNavigator {
         public Fragment getRootFragment(int index) {
             switch (index) {
                 case FragNavController.TAB1:
-                    return DesignPatternListFragment.newInstance();
+                    return BaseDesignPatternsFragment.newInstance(mFileNameDispatcher.getFileNameFor(DrawerItems.CREATIONAL));
+                case FragNavController.TAB2:
+                    return BaseDesignPatternsFragment.newInstance(mFileNameDispatcher.getFileNameFor(DrawerItems.BEHAVIORAL));
+                case FragNavController.TAB3:
+                    return BaseDesignPatternsFragment.newInstance(mFileNameDispatcher.getFileNameFor(DrawerItems.STRUCTURAL));
                 default:
                     throw new IllegalStateException("unsupported tab index: " + index);
             }
         }
     };
+
+    public void switchTab(DrawerItems item) {
+        switch (item) {
+            case CREATIONAL:
+                mFragNavController.switchTab(0);
+                break;
+            case BEHAVIORAL:
+                mFragNavController.switchTab(1);
+                break;
+            case STRUCTURAL:
+                mFragNavController.switchTab(2);
+                break;
+        }
+    }
 
     public void init(Bundle savedInstanceState) {
         mFragNavController = new FragNavController(mFragmentManager, mFragmentFrameWrapper.getFragmentPlaceHolderId());
@@ -61,25 +78,12 @@ public class ScreensNavigator {
         mFragNavController.pushFragment(CatalogueListFragment.newInstance(designPatternId));
     }
 
-    public void toDesignPatternList() {
-        mFragNavController.pushFragment(DesignPatternListFragment.newInstance());
-    }
-
     public void navigateUp() {
         mFragNavController.popFragment();
     }
 
-    public void toHome() {
-        mFragNavController.clearStack();
-        mFragNavController.pushFragment(DesignPatternListFragment.newInstance());
-    }
-
     public boolean canScreensNavigatorHandleBackPress() {
-        if (mFragNavController.isRootFragment()) {
-            return false;
-        } else {
-            return true;
-        }
+        return !mFragNavController.isRootFragment();
     }
 
     public void handleBackPress() {

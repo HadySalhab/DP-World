@@ -19,7 +19,7 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)
-public class DesignPatternListControllerTest {
+public class BaseDesignPatternsControllerTest {
 
     // region constants ----------------------------------------------------------------------------
     private static final int ID = 1;
@@ -38,12 +38,12 @@ public class DesignPatternListControllerTest {
     @Mock
     ScreensNavigator mScreensNavigatorMock;
     // endregion helper fields ---------------------------------------------------------------------
-    DesignPatternListController SUT;
+    BaseDesignPatternsController SUT;
 
     @Before
     public void setup() throws Exception {
         mUseCaseTD = new UseCaseTD();
-        SUT = new DesignPatternListController(mUseCaseTD, mToastHelperMock, mScreensNavigatorMock, backPressDispatcher);
+        SUT = new BaseDesignPatternsController(mUseCaseTD, mToastHelperMock, mScreensNavigatorMock);
         SUT.bindViewMvc(mDesignPatternViewMvcMock);
     }
 
@@ -118,7 +118,6 @@ public class DesignPatternListControllerTest {
     // region helper methods -----------------------------------------------------------------------
     private void success() {
         // mUseCaseTD.fetchDesignPatternsAndNotify();
-
     }
 
     private List<DesignPattern> getDesignPatternList() {
@@ -142,7 +141,7 @@ public class DesignPatternListControllerTest {
         }
 
         @Override
-        public void fetchDesignPatternsAndNotify() {
+        public void fetchDesignPatternsAndNotify(String fileName) {
             fetchInterraction++;
             for (Listener listener : getListeners()) {
                 if (mFailure) {
@@ -153,7 +152,7 @@ public class DesignPatternListControllerTest {
             }
         }
 
-        public void verifyListenerRegistered(DesignPatternListController candidate) {
+        public void verifyListenerRegistered(BaseDesignPatternsController candidate) {
             for (Listener listener : getListeners()) {
                 if (listener == candidate) {
                     return;
@@ -162,7 +161,7 @@ public class DesignPatternListControllerTest {
             throw new RuntimeException("listener not registered");
         }
 
-        public void verifyListenerNotRegistered(DesignPatternListController candidate) {
+        public void verifyListenerNotRegistered(BaseDesignPatternsController candidate) {
             for (Listener listener : getListeners()) {
                 if (listener == candidate) {
                     throw new RuntimeException("listener registered");
