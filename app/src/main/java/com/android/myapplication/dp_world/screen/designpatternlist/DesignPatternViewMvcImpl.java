@@ -35,11 +35,9 @@ public class DesignPatternViewMvcImpl extends DesignPatternViewMvc implements De
         mToolbar = findViewById(R.id.toolbar);
         mToolbarViewMvc = viewMvcFactory.getViewMvc(ToolbarViewMvc.class, mToolbar);
         initToolbar();
-
     }
 
     private void initToolbar() {
-        mToolbarViewMvc.bindToolbarTextTitle("Desing Patterns");
         mToolbar.addView(mToolbarViewMvc.getRootView());
         mToolbarViewMvc.enableHamburgerButtonAndListen(new ToolbarViewMvc.HamburgerClickListener() {
             @Override
@@ -47,6 +45,10 @@ public class DesignPatternViewMvcImpl extends DesignPatternViewMvc implements De
                 mNavDrawerController.openDrawer();
             }
         });
+    }
+
+    public void bindToolbarTitle(String title){
+        mToolbarViewMvc.bindToolbarTextTitle(title);
     }
 
     @Override

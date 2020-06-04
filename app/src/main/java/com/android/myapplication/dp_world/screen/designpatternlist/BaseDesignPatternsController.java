@@ -8,8 +8,8 @@ import com.android.myapplication.dp_world.screen.common.views.ToastHelper;
 
 import java.util.List;
 
-public  class BaseDesignPatternsController implements DesignPatternViewMvc.Listener,
-        FetchDesignPatternsUseCase.Listener{
+public class BaseDesignPatternsController implements DesignPatternViewMvc.Listener,
+        FetchDesignPatternsUseCase.Listener {
 
     private String mFileName;
     private DesignPatternViewMvc mViewMvc;
@@ -49,6 +49,7 @@ public  class BaseDesignPatternsController implements DesignPatternViewMvc.Liste
 
     @Override
     public void onDesignPatternsFetched(List<DesignPattern> designPatterns) {
+        mViewMvc.bindToolbarTitle(designPatterns.get(0).getCategory());
         mViewMvc.bindDesignPatterns(designPatterns);
     }
 
