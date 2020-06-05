@@ -42,7 +42,7 @@ public class BaseDesignPatternsController implements DesignPatternViewMvc.Listen
 
     @Override
     public void onDesignPatternClicked(DesignPattern designPattern) {
-        mScreensNavigator.toCatalogueList(designPattern.getId());
+        mScreensNavigator.toCatalogueList(designPattern);
     }
 
 

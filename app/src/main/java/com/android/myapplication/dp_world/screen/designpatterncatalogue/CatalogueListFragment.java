@@ -8,22 +8,23 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.android.myapplication.dp_world.designpattern.DesignPattern;
 import com.android.myapplication.dp_world.screen.common.ViewMvcFactory;
 import com.android.myapplication.dp_world.screen.common.controllers.BaseFragment;
 
 import javax.inject.Inject;
 
 public class CatalogueListFragment extends BaseFragment {
-    private static final String DESIGN_PATTERN_ID = "DESIGN_PATTERN_ID";
+    private static final String DESIGN_PATTERN_OBJECT = "DESIGN_PATTERN_OBJECT";
 
     @Inject
     ViewMvcFactory mViewMvcFactory;
     @Inject
     CatalogueListController mCatalogueListController;
 
-    public static CatalogueListFragment newInstance(int designPatternId) {
+    public static CatalogueListFragment newInstance(DesignPattern designPatternObj) {
         Bundle args = new Bundle();
-        args.putInt(DESIGN_PATTERN_ID, designPatternId);
+        args.putParcelable(DESIGN_PATTERN_OBJECT, designPatternObj);
         CatalogueListFragment catalogueListFragment = new CatalogueListFragment();
         catalogueListFragment.setArguments(args);
         return catalogueListFragment;
@@ -41,12 +42,12 @@ public class CatalogueListFragment extends BaseFragment {
         super.onCreateView(inflater, container, savedInstanceState);
         CatalogueViewMvc mViewMvc = mViewMvcFactory.getViewMvc(CatalogueViewMvc.class, container);
         mCatalogueListController.bindViewMvc(mViewMvc);
-        mCatalogueListController.setDesignPatternId(getDesignPatternId());
+        mCatalogueListController.setDesignPatternObj(getDesignPatternObj());
         return mViewMvc.getRootView();
     }
 
-    private int getDesignPatternId() {
-        return getArguments().getInt(DESIGN_PATTERN_ID);
+    private DesignPattern getDesignPatternObj() {
+        return getArguments().getParcelable(DESIGN_PATTERN_OBJECT);
     }
 
 

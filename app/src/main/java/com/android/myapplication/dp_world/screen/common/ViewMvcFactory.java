@@ -12,6 +12,7 @@ import com.android.myapplication.dp_world.screen.common.toolbar.ToolbarViewMvc;
 import com.android.myapplication.dp_world.screen.common.views.ViewMvc;
 import com.android.myapplication.dp_world.screen.designpatterncatalogue.CatalogueViewMvc;
 import com.android.myapplication.dp_world.screen.designpatterncatalogue.CatalogueViewMvcImpl;
+import com.android.myapplication.dp_world.screen.designpatterncatalogue.ListHeaderViewMvc;
 import com.android.myapplication.dp_world.screen.designpatterncatalogue.catalogueitem.CatalogueListItemViewMvc;
 import com.android.myapplication.dp_world.screen.designpatterncatalogue.catalogueitem.CatalogueListItemViewMvcImpl;
 import com.android.myapplication.dp_world.screen.designpatternlist.DesignPatternViewMvc;
@@ -43,6 +44,8 @@ public class ViewMvcFactory {
             viewMvc = new ToolbarViewMvc(mLayoutInflater, parent);
         } else if (NavDrawerViewMvc.class.equals(mvcViewClass)) {
             viewMvc = new NavDrawerViewMvcImpl(mLayoutInflater, parent);
+        } else if (ListHeaderViewMvc.class.equals(mvcViewClass)) {
+            viewMvc = new ListHeaderViewMvc(mLayoutInflater, parent);
         } else {
             throw new IllegalArgumentException("unsupported MVC view class " + mvcViewClass);
         }

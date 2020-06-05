@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import com.android.myapplication.dp_world.designpattern.DesignPattern;
 import com.android.myapplication.dp_world.designpattern.FileNameDispatcher;
 import com.android.myapplication.dp_world.screen.common.controllers.FragmentFrameWrapper;
 import com.android.myapplication.dp_world.screen.common.navdrawer.DrawerItems;
@@ -73,8 +74,8 @@ public class ScreensNavigator {
         mFragNavController.onSaveInstanceState(saveInstanceState);
     }
 
-    public void toCatalogueList(int designPatternId) {
-        mFragNavController.pushFragment(CatalogueListFragment.newInstance(designPatternId));
+    public void toCatalogueList(DesignPattern designPattern) {
+        mFragNavController.pushFragment(CatalogueListFragment.newInstance(designPattern));
     }
 
     public void navigateUp() {

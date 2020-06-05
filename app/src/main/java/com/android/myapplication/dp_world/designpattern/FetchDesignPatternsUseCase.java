@@ -49,8 +49,8 @@ public class FetchDesignPatternsUseCase extends BaseObservable<FetchDesignPatter
             designPatterns.add(new DesignPattern(
                     designPatternSchema.getId(),
                     designPatternSchema.getTitle(),
-                    designPatternSchema.getCategory()
-            ));
+                    designPatternSchema.getCategory(),
+                    designPatternSchema.getDescription()));
         }
         return designPatterns;
     }
