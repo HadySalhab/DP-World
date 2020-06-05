@@ -3,31 +3,31 @@
   {
     "id": 1,
     "title": "Template Method",
-    "description": "Ensure a class only has one instance and provide a global point of access to it",
+    "description": "Define the skeleton of an algorithm in an operation, deferring some steps to subclasses. Lets subclasses redefine certain steps of an algorithm without changing the algorithm's structure.",
     "category": "Behavioral"
   },
   {
     "id": 2,
     "title": "Iterator",
-    "description": "Separate the construction of a complex object from its representing so that the same construction process can create different representations",
+    "description": "Provide a way to access the elements of an aggregate object sequentially without exposing its underlying representation.",
     "category": "Behavioral"
   },
   {
     "id": 3,
     "title": "Observer",
-    "description": "Specify the kinds of objects to create using a prototypical instance, and create new objects by copying this prototype",
+    "description": "Define a one-to-many dependency between objects so that when one object changes state, all its dependents are notified and updated automatically.",
     "category": "Behavioral"
   },
   {
     "id": 4,
     "title": "Strategy",
-    "description": "Define an interface for creating an object, but let subclasses decide which class to instantiate. Lets a class defer instantiation to subclasses",
+    "description": "Define a family of algorithms, encapsulate each one, and make them interchangeable. Lets the algorithm vary independently from clients that use it.",
     "category": "Behavioral"
   },
   {
     "id": 5,
     "title": "State",
-    "description": "Provides an interface for creating families of related or dependent objects without specifying their concrete class.",
+    "description": "Allow an object to alter its behavior when its internal state changes. The object will appear to change its class.",
     "category": "Behavioral"
   }
 ]

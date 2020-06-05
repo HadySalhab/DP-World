@@ -1,36 +1,36 @@
 {
- "design_patterns": [
-  {
-    "id": 1,
-    "title": "Decorator",
-    "description": "Ensure a class only has one instance and provide a global point of access to it",
-    "category": "Structural"
-  },
-  {
-    "id": 2,
-    "title": "Composite",
-    "description": "Separate the construction of a complex object from its representing so that the same construction process can create different representations",
-    "category": "Structural"
-  },
-  {
-    "id": 3,
-    "title": "Facade",
-    "description": "Specify the kinds of objects to create using a prototypical instance, and create new objects by copying this prototype",
-    "category": "Structural"
-  },
-  {
-    "id": 4,
-    "title": "Proxy",
-    "description": "Define an interface for creating an object, but let subclasses decide which class to instantiate. Lets a class defer instantiation to subclasses",
-    "category": "Structural"
-  },
-  {
-    "id": 5,
-    "title": "Adapter",
-    "description": "Provides an interface for creating families of related or dependent objects without specifying their concrete class.",
-    "category": "Structural"
-  }
-]
+  "design_patterns": [
+    {
+      "id": 1,
+      "title": "Decorator",
+      "description": "Attach additional responsibilities to an object dynamically. Provide a flexible alternative to sub-classing for extending functionality.",
+      "category": "Structural"
+    },
+    {
+      "id": 2,
+      "title": "Composite",
+      "description": "Compose objects into tree structures to represent part-whole hierarchies. Lets clients treat individual objects and compositions of objects uniformly.",
+      "category": "Structural"
+    },
+    {
+      "id": 3,
+      "title": "Facade",
+      "description": "Provide a unified interface to a set of interfaces in a subsystem. Defines a highlevel interface that makes the subsystem easier to use.",
+      "category": "Structural"
+    },
+    {
+      "id": 4,
+      "title": "Proxy",
+      "description": "Provide a surrogate or placeholder for another object to control access to it.",
+      "category": "Structural"
+    },
+    {
+      "id": 5,
+      "title": "Adapter",
+      "description": "Convert the interface of a class into another interface clients expect. Lets classes work together that couldn't otherwise because of incompatible interfaces.",
+      "category": "Structural"
+    }
+  ]
 }
 
 
