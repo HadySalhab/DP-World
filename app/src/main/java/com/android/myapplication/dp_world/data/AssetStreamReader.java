@@ -13,6 +13,7 @@ public class AssetStreamReader {
 
     public interface Listener {
         void onDesignPatternDataRead(String json);
+
         void onDesignPatternDataReadFailed(String message);
     }
 
@@ -21,7 +22,7 @@ public class AssetStreamReader {
     private final UiThreadPoster mUiThreadPoster;
     private final Object Lock = new Object();
 
-   public AssetStreamReader(AssetManager assetManager, BackgroundThreadPoster backgroundThreadPoster, UiThreadPoster uiThreadPoster) {
+    public AssetStreamReader(AssetManager assetManager, BackgroundThreadPoster backgroundThreadPoster, UiThreadPoster uiThreadPoster) {
         mAssetManager = assetManager;
         mBackgroundThreadPoster = backgroundThreadPoster;
         mUiThreadPoster = uiThreadPoster;

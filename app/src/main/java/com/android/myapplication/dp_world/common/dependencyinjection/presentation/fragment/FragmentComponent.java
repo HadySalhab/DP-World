@@ -9,5 +9,6 @@ import dagger.Subcomponent;
 @Subcomponent(modules = FragmentModule.class)
 public interface FragmentComponent {
     void inject(BaseDesignPatternsFragment baseDesignPatternsFragment);
+
     void inject(CatalogueListFragment catalogueListFragment);
 }

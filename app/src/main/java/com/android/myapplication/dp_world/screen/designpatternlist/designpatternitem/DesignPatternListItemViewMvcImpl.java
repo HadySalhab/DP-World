@@ -23,6 +23,7 @@ public class DesignPatternListItemViewMvcImpl extends DesignPatternListItemViewM
             }
         }));
     }
+
     @Override
     public void bindDesignPattern(DesignPattern designPattern) {
         mDesignPattern = designPattern;

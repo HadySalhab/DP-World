@@ -4,14 +4,16 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+
 import com.android.myapplication.dp_world.screen.common.ViewMvcFactory;
 import com.android.myapplication.dp_world.screen.common.controllers.BaseFragment;
 
 import javax.inject.Inject;
 
-public class CatalogueListFragment extends BaseFragment  {
+public class CatalogueListFragment extends BaseFragment {
     private static final String DESIGN_PATTERN_ID = "DESIGN_PATTERN_ID";
 
     @Inject
@@ -43,7 +45,7 @@ public class CatalogueListFragment extends BaseFragment  {
         return mViewMvc.getRootView();
     }
 
-    private int getDesignPatternId(){
+    private int getDesignPatternId() {
         return getArguments().getInt(DESIGN_PATTERN_ID);
     }
 

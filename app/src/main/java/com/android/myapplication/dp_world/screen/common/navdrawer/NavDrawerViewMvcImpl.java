@@ -1,24 +1,16 @@
 package com.android.myapplication.dp_world.screen.common.navdrawer;
 
-import android.util.ArrayMap;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
 import androidx.annotation.IdRes;
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.Fragment;
 
 import com.android.myapplication.dp_world.R;
 import com.google.android.material.navigation.NavigationView;
-import com.ncapdevi.fragnav.FragNavController;
-
-import java.util.ArrayList;
-import java.util.Map;
 
 public class NavDrawerViewMvcImpl extends NavDrawerViewMvc {
     private final DrawerLayout mDrawerLayout;

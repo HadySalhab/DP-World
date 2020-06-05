@@ -4,5 +4,6 @@ import androidx.annotation.IdRes;
 
 public interface FragmentFrameWrapper {
     //FrameLayout getFragmentPlaceHolder();
-    @IdRes int getFragmentPlaceHolderId();
+    @IdRes
+    int getFragmentPlaceHolderId();
 }

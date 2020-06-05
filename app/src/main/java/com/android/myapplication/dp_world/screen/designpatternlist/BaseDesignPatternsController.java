@@ -1,6 +1,5 @@
 package com.android.myapplication.dp_world.screen.designpatternlist;
 
-import com.android.myapplication.dp_world.common.Constants;
 import com.android.myapplication.dp_world.designpattern.DesignPattern;
 import com.android.myapplication.dp_world.designpattern.FetchDesignPatternsUseCase;
 import com.android.myapplication.dp_world.screen.common.views.ScreensNavigator;

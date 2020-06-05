@@ -10,5 +10,6 @@ import dagger.Subcomponent;
 @Subcomponent(modules = ActivityModule.class)
 public interface ActivityComponent {
     FragmentComponent newFragmentComponent(FragmentModule fragmentModule);
+
     void inject(MainActivity mainActivity);
 }

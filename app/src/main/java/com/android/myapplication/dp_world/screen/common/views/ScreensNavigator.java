@@ -6,7 +6,6 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
-import com.android.myapplication.dp_world.common.Constants;
 import com.android.myapplication.dp_world.designpattern.FileNameDispatcher;
 import com.android.myapplication.dp_world.screen.common.controllers.FragmentFrameWrapper;
 import com.android.myapplication.dp_world.screen.common.navdrawer.DrawerItems;

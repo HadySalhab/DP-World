@@ -5,6 +5,7 @@ import com.android.myapplication.dp_world.screen.common.views.BaseObservableView
 public abstract class CatalogueViewMvc extends BaseObservableViewMvc<CatalogueViewMvc.Listener> {
     interface Listener {
         void onCatalogueItemClicked(CatalogueItem designPatternCatalogueListItem);
+
         void onNavigateUpClicked();
     }
 

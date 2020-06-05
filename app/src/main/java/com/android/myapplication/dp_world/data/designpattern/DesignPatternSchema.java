@@ -13,7 +13,7 @@ public class DesignPatternSchema {
     @SerializedName("category")
     private final String mCategory;
 
-    public DesignPatternSchema(int id, String title, String description,String category) {
+    public DesignPatternSchema(int id, String title, String description, String category) {
         mId = id;
         mTitle = title;
         mDescription = description;

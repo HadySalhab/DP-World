@@ -23,16 +23,17 @@ public class CatalogueViewMvcImpl extends CatalogueViewMvc implements CatalogueA
         mAdapter = new CatalogueArrayAdapter(getContext(), this, viewMvcFactory);
         mListView.setAdapter(mAdapter);
         mToolbar = findViewById(R.id.toolbar);
-        mToolbarViewMvc = viewMvcFactory.getViewMvc(ToolbarViewMvc.class,mToolbar);
+        mToolbarViewMvc = viewMvcFactory.getViewMvc(ToolbarViewMvc.class, mToolbar);
         initToolbar();
     }
-    private void initToolbar(){
+
+    private void initToolbar() {
         mToolbar.addView(mToolbarViewMvc.getRootView());
         mToolbarViewMvc.bindToolbarTextTitle("Catalogue");
         mToolbarViewMvc.enableUpButtonAndListen(new ToolbarViewMvc.NavigateUpClickListener() {
             @Override
             public void onNavigateUp() {
-                for(CatalogueViewMvc.Listener listener: getListeners()){
+                for (CatalogueViewMvc.Listener listener : getListeners()) {
                     listener.onNavigateUpClicked();
                 }
             }

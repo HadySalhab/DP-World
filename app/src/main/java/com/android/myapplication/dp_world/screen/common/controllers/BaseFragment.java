@@ -1,8 +1,5 @@
 package com.android.myapplication.dp_world.screen.common.controllers;
 
-import android.os.Bundle;
-
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.android.myapplication.dp_world.common.dependencyinjection.presentation.activity.ActivityComponent;

@@ -1,7 +1,5 @@
 package com.android.myapplication.dp_world.data;
 
-import android.util.Log;
-
 import com.google.gson.Gson;
 
 public class JsonToGsonConverter {

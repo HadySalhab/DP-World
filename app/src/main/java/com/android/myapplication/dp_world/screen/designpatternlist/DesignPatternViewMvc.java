@@ -11,5 +11,6 @@ public abstract class DesignPatternViewMvc extends BaseObservableViewMvc<DesignP
     }
 
     abstract public void bindDesignPatterns(List<DesignPattern> designPatterns);
+
     abstract public void bindToolbarTitle(String title);
 }

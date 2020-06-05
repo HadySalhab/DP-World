@@ -32,7 +32,7 @@ public class CatalogueListController implements CatalogueViewMvc.Listener {
 
     @Override
     public void onCatalogueItemClicked(CatalogueItem designPatternCatalogueListItem) {
-        Toast.makeText(mContext,"Catalogue for:"+mDesignPatternId,Toast.LENGTH_LONG).show();
+        Toast.makeText(mContext, "Catalogue for:" + mDesignPatternId, Toast.LENGTH_LONG).show();
     }
 
     @Override

@@ -7,5 +7,6 @@ public abstract class CatalogueListItemViewMvc extends BaseObservableViewMvc<Cat
     public interface Listener {
         void onCatalogueItemClicked(CatalogueItem catalogueItem);
     }
+
     public abstract void bindCatalogueItem(CatalogueItem catalogueItem);
 }

@@ -47,7 +47,7 @@ public class DesignPatternViewMvcImpl extends DesignPatternViewMvc implements De
         });
     }
 
-    public void bindToolbarTitle(String title){
+    public void bindToolbarTitle(String title) {
         mToolbarViewMvc.bindToolbarTextTitle(title);
     }
 

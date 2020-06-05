@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -13,7 +14,7 @@ import com.android.myapplication.dp_world.screen.common.controllers.BaseFragment
 
 import javax.inject.Inject;
 
-public class BaseDesignPatternsFragment extends BaseFragment  {
+public class BaseDesignPatternsFragment extends BaseFragment {
     @Inject
     ViewMvcFactory mViewMvcFactory;
     @Inject
@@ -22,8 +23,8 @@ public class BaseDesignPatternsFragment extends BaseFragment  {
 
     public static Fragment newInstance(String fileName) {
         Bundle bundle = new Bundle();
-        bundle.putString(DESIGN_PATTERN_FILE_NAME,fileName);
-        BaseDesignPatternsFragment baseDesignPatternsFragment =  new BaseDesignPatternsFragment();
+        bundle.putString(DESIGN_PATTERN_FILE_NAME, fileName);
+        BaseDesignPatternsFragment baseDesignPatternsFragment = new BaseDesignPatternsFragment();
         baseDesignPatternsFragment.setArguments(bundle);
         return baseDesignPatternsFragment;
     }
@@ -37,7 +38,7 @@ public class BaseDesignPatternsFragment extends BaseFragment  {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-         super.onCreateView(inflater, container, savedInstanceState);
+        super.onCreateView(inflater, container, savedInstanceState);
         DesignPatternViewMvc mViewMvc = mViewMvcFactory.getViewMvc(DesignPatternViewMvc.class, container);
         mBaseDesignPatternsController.bindViewMvc(mViewMvc);
         mBaseDesignPatternsController.bindDesignPatternFileName(getArguments().getString(DESIGN_PATTERN_FILE_NAME));
