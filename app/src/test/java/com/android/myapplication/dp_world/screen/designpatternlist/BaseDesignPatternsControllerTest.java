@@ -16,7 +16,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.hamcrest.CoreMatchers.is;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.eq;
+import static org.mockito.Mockito.verify;
 
 @RunWith(MockitoJUnitRunner.class)
 public class BaseDesignPatternsControllerTest {
@@ -111,7 +112,7 @@ public class BaseDesignPatternsControllerTest {
         SUT.onStart();
         SUT.onDesignPatternClicked(getDesignPattern());
         // Assert
-        verify(mScreensNavigatorMock).toCatalogueList(eq(getDesignPattern().getId()));
+        verify(mScreensNavigatorMock).toCatalogueList(eq(getDesignPattern()));
 
     }
 
@@ -127,7 +128,7 @@ public class BaseDesignPatternsControllerTest {
     }
 
     private DesignPattern getDesignPattern() {
-        return new DesignPattern(ID, TITLE, CATEGORY);
+        return new DesignPattern(ID, TITLE, CATEGORY, DESCRIPTION);
     }
     // endregion helper methods --------------------------------------------------------------------
 

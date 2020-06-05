@@ -165,7 +165,7 @@ public class FetchDesignPatternsUseCaseTest {
             designPatternList.add(
                     new DesignPattern(designPatternSchema.getId(),
                             designPatternSchema.getTitle(),
-                            designPatternSchema.getCategory()));
+                            designPatternSchema.getCategory(), designPatternSchema.getDescription()));
         }
         return designPatternList;
     }
