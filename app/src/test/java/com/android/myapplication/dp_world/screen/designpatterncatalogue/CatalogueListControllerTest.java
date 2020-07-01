@@ -2,7 +2,10 @@ package com.android.myapplication.dp_world.screen.designpatterncatalogue;
 
 import android.content.Context;
 
-import com.android.myapplication.dp_world.screen.common.views.ScreensNavigator;
+import com.android.myapplication.dp_world.screen.pages.catalogue.adapter.CatalogueItem;
+import com.android.myapplication.dp_world.screen.pages.catalogue.components.CatalogueViewMvc;
+import com.android.myapplication.dp_world.screen.pages.catalogue.controller.CatalogueListController;
+import com.android.myapplication.dp_world.screen.vo.ScreensNavigator;
 
 import org.junit.Before;
 import org.junit.Test;

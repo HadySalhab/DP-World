@@ -1,9 +1,10 @@
 package com.android.myapplication.dp_world.designpattern;
 
-import com.android.myapplication.dp_world.data.AssetStreamReader;
-import com.android.myapplication.dp_world.data.designpattern.DesignPatternSchema;
-import com.android.myapplication.dp_world.data.designpattern.DesignPatternsResponseSchema;
-import com.android.myapplication.dp_world.data.JsonToGsonConverter;
+import com.android.myapplication.dp_world.actions.AssetStreamReader;
+import com.android.myapplication.dp_world.actions.FetchDesignPatternsUseCase;
+import com.android.myapplication.dp_world.actions.designpattern.DesignPatternSchema;
+import com.android.myapplication.dp_world.actions.designpattern.DesignPatternsResponseSchema;
+import com.android.myapplication.dp_world.actions.JsonToGsonConverter;
 
 import org.junit.Before;
 import org.junit.Test;

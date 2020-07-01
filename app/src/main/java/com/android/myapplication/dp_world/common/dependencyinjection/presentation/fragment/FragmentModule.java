@@ -4,11 +4,11 @@ import android.content.Context;
 
 import androidx.fragment.app.Fragment;
 
-import com.android.myapplication.dp_world.designpattern.FetchDesignPatternsUseCase;
-import com.android.myapplication.dp_world.screen.common.views.ScreensNavigator;
-import com.android.myapplication.dp_world.screen.common.views.ToastHelper;
-import com.android.myapplication.dp_world.screen.designpatterncatalogue.CatalogueListController;
-import com.android.myapplication.dp_world.screen.designpatternlist.BaseDesignPatternsController;
+import com.android.myapplication.dp_world.actions.FetchDesignPatternsUseCase;
+import com.android.myapplication.dp_world.screen.vo.ScreensNavigator;
+import com.android.myapplication.dp_world.screen.vo.ToastHelper;
+import com.android.myapplication.dp_world.screen.pages.catalogue.controller.CatalogueListController;
+import com.android.myapplication.dp_world.screen.pages.dp.contoller.DPController;
 
 import dagger.Module;
 import dagger.Provides;
@@ -22,11 +22,11 @@ public class FragmentModule {
     }
 
     @Provides
-    BaseDesignPatternsController getDesignPatternListController(FetchDesignPatternsUseCase fetchDesignPatternsUseCase,
-                                                                ToastHelper toastHelper,
-                                                                ScreensNavigator screensNavigator
+    DPController getDesignPatternListController(FetchDesignPatternsUseCase fetchDesignPatternsUseCase,
+                                                ToastHelper toastHelper,
+                                                ScreensNavigator screensNavigator
     ) {
-        return new BaseDesignPatternsController(fetchDesignPatternsUseCase, toastHelper, screensNavigator);
+        return new DPController(fetchDesignPatternsUseCase, toastHelper, screensNavigator);
     }
 
     @Provides
