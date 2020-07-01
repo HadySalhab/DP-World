@@ -6,19 +6,19 @@ import android.view.ViewGroup;
 import androidx.annotation.Nullable;
 
 import com.android.myapplication.dp_world.screen.common.controllers.NavDrawerController;
-import com.android.myapplication.dp_world.screen.pages.main.components.NavDrawerViewMvc;
-import com.android.myapplication.dp_world.screen.pages.main.components.NavDrawerViewMvcImpl;
-import com.android.myapplication.dp_world.screen.layout.toolbar.ToolbarViewMvc;
 import com.android.myapplication.dp_world.screen.common.views.ViewMvc;
-import com.android.myapplication.dp_world.screen.pages.catalogue.components.CatalogueViewMvc;
-import com.android.myapplication.dp_world.screen.pages.catalogue.components.CatalogueViewMvcImpl;
+import com.android.myapplication.dp_world.screen.layout.toolbar.ToolbarViewMvc;
 import com.android.myapplication.dp_world.screen.pages.catalogue.components.CatalogueListHeaderViewMvc;
 import com.android.myapplication.dp_world.screen.pages.catalogue.components.CatalogueListItemViewMvc;
 import com.android.myapplication.dp_world.screen.pages.catalogue.components.CatalogueListItemViewMvcImpl;
-import com.android.myapplication.dp_world.screen.pages.dp.components.DPViewMvc;
-import com.android.myapplication.dp_world.screen.pages.dp.components.DPViewMvcImpl;
+import com.android.myapplication.dp_world.screen.pages.catalogue.components.CatalogueViewMvc;
+import com.android.myapplication.dp_world.screen.pages.catalogue.components.CatalogueViewMvcImpl;
 import com.android.myapplication.dp_world.screen.pages.dp.components.DPItemViewMvc;
 import com.android.myapplication.dp_world.screen.pages.dp.components.DPItemViewMvcImpl;
+import com.android.myapplication.dp_world.screen.pages.dp.components.DPViewMvc;
+import com.android.myapplication.dp_world.screen.pages.dp.components.DPViewMvcImpl;
+import com.android.myapplication.dp_world.screen.pages.main.components.NavDrawerViewMvc;
+import com.android.myapplication.dp_world.screen.pages.main.components.NavDrawerViewMvcImpl;
 
 public class ViewMvcFactory {
     private final LayoutInflater mLayoutInflater;

@@ -1,7 +1,7 @@
 package com.android.myapplication.dp_world.screen.pages.main.components;
 
-import com.android.myapplication.dp_world.screen.pages.main.data.DrawerItems;
 import com.android.myapplication.dp_world.screen.common.views.BaseObservableViewMvc;
+import com.android.myapplication.dp_world.screen.pages.main.data.DrawerItems;
 
 public abstract class NavDrawerViewMvc extends BaseObservableViewMvc<NavDrawerViewMvc.Listener> {
 

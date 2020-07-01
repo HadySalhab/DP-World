@@ -1,8 +1,8 @@
 package com.android.myapplication.dp_world.actions;
 
-import com.android.myapplication.dp_world.common.BaseObservable;
 import com.android.myapplication.dp_world.actions.designpattern.DesignPatternSchema;
 import com.android.myapplication.dp_world.actions.designpattern.DesignPatternsResponseSchema;
+import com.android.myapplication.dp_world.common.BaseObservable;
 import com.android.myapplication.dp_world.designpattern.DesignPattern;
 
 import java.util.ArrayList;

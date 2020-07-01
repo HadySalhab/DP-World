@@ -7,7 +7,6 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 
 import com.android.myapplication.dp_world.R;
-import com.android.myapplication.dp_world.designpattern.DesignPattern;
 
 public class DPItemViewMvcImpl extends DPItemViewMvc {
 
@@ -17,15 +16,17 @@ public class DPItemViewMvcImpl extends DPItemViewMvc {
         setRootView(inflater.inflate(R.layout.layout_design_pattern_list_item, parent, false));
         mTextView = findViewById(R.id.text_dp_title);
         getRootView().setOnClickListener((v -> {
-           mProps.listener.onDesignPatternClicked(mProps.designPattern);
+            mProps.listener.onDesignPatternClicked(mProps.designPattern);
         }));
     }
+
     @Override
     public void setProps(Props props) {
         mProps = props;
         render();
     }
-    private void render(){
+
+    private void render() {
         mTextView.setText(mProps.designPattern.getTitle());
     }
 }

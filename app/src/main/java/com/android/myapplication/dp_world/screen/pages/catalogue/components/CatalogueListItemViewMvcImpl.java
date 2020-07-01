@@ -1,12 +1,12 @@
 package com.android.myapplication.dp_world.screen.pages.catalogue.components;
 
-        import android.view.LayoutInflater;
-        import android.view.ViewGroup;
-        import android.widget.TextView;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
-        import androidx.annotation.Nullable;
+import androidx.annotation.Nullable;
 
-        import com.android.myapplication.dp_world.R;
+import com.android.myapplication.dp_world.R;
 
 public class CatalogueListItemViewMvcImpl extends CatalogueListItemViewMvc {
     private final TextView mTextView;
@@ -19,7 +19,7 @@ public class CatalogueListItemViewMvcImpl extends CatalogueListItemViewMvc {
         });
     }
 
-    private void render(){
+    private void render() {
         mTextView.setText(mProps.catalogueItem.getName());
     }
 

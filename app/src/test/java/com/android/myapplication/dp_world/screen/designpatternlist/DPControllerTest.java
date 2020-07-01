@@ -1,11 +1,11 @@
 package com.android.myapplication.dp_world.screen.designpatternlist;
 
-import com.android.myapplication.dp_world.designpattern.DesignPattern;
 import com.android.myapplication.dp_world.actions.FetchDesignPatternsUseCase;
-import com.android.myapplication.dp_world.screen.vo.ScreensNavigator;
-import com.android.myapplication.dp_world.screen.vo.ToastHelper;
+import com.android.myapplication.dp_world.designpattern.DesignPattern;
 import com.android.myapplication.dp_world.screen.pages.dp.components.DPViewMvc;
 import com.android.myapplication.dp_world.screen.pages.dp.contoller.DPController;
+import com.android.myapplication.dp_world.screen.vo.ScreensNavigator;
+import com.android.myapplication.dp_world.screen.vo.ToastHelper;
 
 import org.junit.Assert;
 import org.junit.Before;

@@ -4,15 +4,15 @@
         <item
             android:id="@+id/drawer_menu_creational"
             android:icon="@drawable/ic_creational"
-            android:title="Creational"/>
+            android:title="Creational" />
         <item
             android:id="@+id/drawer_menu_behavioral"
             android:icon="@drawable/ic_behavioral"
-            android:title="Behavioral"/>
+            android:title="Behavioral" />
         <item
             android:id="@+id/drawer_menu_structural"
             android:icon="@drawable/ic_structural"
-            android:title="Structural"/>
+            android:title="Structural" />
     </group>
 
 </menu>

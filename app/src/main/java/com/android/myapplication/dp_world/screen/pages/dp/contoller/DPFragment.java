@@ -9,9 +9,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.android.myapplication.dp_world.screen.vo.ViewMvcFactory;
 import com.android.myapplication.dp_world.screen.common.controllers.BaseFragment;
 import com.android.myapplication.dp_world.screen.pages.dp.components.DPViewMvc;
+import com.android.myapplication.dp_world.screen.vo.ViewMvcFactory;
 
 import javax.inject.Inject;
 

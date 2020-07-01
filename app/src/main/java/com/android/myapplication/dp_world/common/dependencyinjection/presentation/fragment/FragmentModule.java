@@ -5,10 +5,10 @@ import android.content.Context;
 import androidx.fragment.app.Fragment;
 
 import com.android.myapplication.dp_world.actions.FetchDesignPatternsUseCase;
-import com.android.myapplication.dp_world.screen.vo.ScreensNavigator;
-import com.android.myapplication.dp_world.screen.vo.ToastHelper;
 import com.android.myapplication.dp_world.screen.pages.catalogue.controller.CatalogueListController;
 import com.android.myapplication.dp_world.screen.pages.dp.contoller.DPController;
+import com.android.myapplication.dp_world.screen.vo.ScreensNavigator;
+import com.android.myapplication.dp_world.screen.vo.ToastHelper;
 
 import dagger.Module;
 import dagger.Provides;

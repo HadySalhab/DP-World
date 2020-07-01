@@ -8,10 +8,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
 
 import com.android.myapplication.dp_world.R;
-import com.android.myapplication.dp_world.designpattern.DesignPattern;
 import com.android.myapplication.dp_world.screen.layout.toolbar.ToolbarViewMvc;
 import com.android.myapplication.dp_world.screen.pages.catalogue.adapter.CatalogueArrayAdapter;
-import com.android.myapplication.dp_world.screen.pages.catalogue.adapter.CatalogueItem;
 import com.android.myapplication.dp_world.screen.vo.ViewMvcFactory;
 
 public class CatalogueViewMvcImpl extends CatalogueViewMvc {
@@ -20,14 +18,14 @@ public class CatalogueViewMvcImpl extends CatalogueViewMvc {
     private final ToolbarViewMvc mToolbarViewMvc;
     private final CatalogueListHeaderViewMvc mListHeaderViewMvc;
     private final ToolbarViewMvc.Props.NavigateUpClickListener mNavigateUpClickListener = () -> {
-       mProps.listener.onNavigateUpClicked();
+        mProps.listener.onNavigateUpClicked();
     };
 
     public CatalogueViewMvcImpl(LayoutInflater layoutInflater, @Nullable ViewGroup parent, ViewMvcFactory viewMvcFactory) {
         setRootView(layoutInflater.inflate(R.layout.layout_catalogue_list, parent, false));
         ListView listView = findViewById(R.id.list_catalogue);
         mToolbar = findViewById(R.id.toolbar);
-        mAdapter = new CatalogueArrayAdapter(getContext(),viewMvcFactory);
+        mAdapter = new CatalogueArrayAdapter(getContext(), viewMvcFactory);
         listView.setAdapter(mAdapter);
         mToolbarViewMvc = viewMvcFactory.getViewMvc(ToolbarViewMvc.class, mToolbar);
         mListHeaderViewMvc = viewMvcFactory.getViewMvc(CatalogueListHeaderViewMvc.class, listView);

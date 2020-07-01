@@ -9,8 +9,10 @@ public abstract class CatalogueViewMvc extends BaseObservableViewMvc<CatalogueVi
 
     public interface Listener {
         void onCatalogueItemClicked(CatalogueItem designPatternCatalogueListItem);
+
         void onNavigateUpClicked();
     }
+
     public static class Props {
         protected final CatalogueItem[] designPatternCatalogueList;
         protected final DesignPattern designPattern;
@@ -24,6 +26,8 @@ public abstract class CatalogueViewMvc extends BaseObservableViewMvc<CatalogueVi
             this.listener = listener;
         }
     }
+
     protected Props mProps;
+
     public abstract void setProps(CatalogueViewMvcImpl.Props props);
 }

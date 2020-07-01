@@ -8,13 +8,13 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 
 import com.android.myapplication.dp_world.actions.AssetStreamReader;
-import com.android.myapplication.dp_world.actions.JsonToGsonConverter;
 import com.android.myapplication.dp_world.actions.FetchDesignPatternsUseCase;
-import com.android.myapplication.dp_world.screen.vo.ViewMvcFactory;
+import com.android.myapplication.dp_world.actions.JsonToGsonConverter;
 import com.android.myapplication.dp_world.screen.common.controllers.FragmentFrameWrapper;
 import com.android.myapplication.dp_world.screen.common.controllers.NavDrawerController;
 import com.android.myapplication.dp_world.screen.vo.ScreensNavigator;
 import com.android.myapplication.dp_world.screen.vo.ToastHelper;
+import com.android.myapplication.dp_world.screen.vo.ViewMvcFactory;
 import com.google.gson.Gson;
 import com.techyourchance.threadposter.BackgroundThreadPoster;
 import com.techyourchance.threadposter.UiThreadPoster;

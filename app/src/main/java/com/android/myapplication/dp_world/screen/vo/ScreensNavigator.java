@@ -9,9 +9,9 @@ import androidx.fragment.app.FragmentManager;
 import com.android.myapplication.dp_world.common.Constants;
 import com.android.myapplication.dp_world.designpattern.DesignPattern;
 import com.android.myapplication.dp_world.screen.common.controllers.FragmentFrameWrapper;
-import com.android.myapplication.dp_world.screen.pages.main.data.DrawerItems;
-import com.android.myapplication.dp_world.screen.pages.dp.contoller.DPFragment;
 import com.android.myapplication.dp_world.screen.pages.catalogue.controller.CatalogueListFragment;
+import com.android.myapplication.dp_world.screen.pages.dp.contoller.DPFragment;
+import com.android.myapplication.dp_world.screen.pages.main.data.DrawerItems;
 import com.ncapdevi.fragnav.FragNavController;
 
 

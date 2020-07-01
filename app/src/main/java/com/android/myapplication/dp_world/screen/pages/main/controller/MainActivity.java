@@ -4,14 +4,14 @@ import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 
-import com.android.myapplication.dp_world.screen.vo.ViewMvcFactory;
 import com.android.myapplication.dp_world.screen.common.controllers.BackPressListener;
 import com.android.myapplication.dp_world.screen.common.controllers.BaseActivity;
 import com.android.myapplication.dp_world.screen.common.controllers.FragmentFrameWrapper;
 import com.android.myapplication.dp_world.screen.common.controllers.NavDrawerController;
-import com.android.myapplication.dp_world.screen.pages.main.data.DrawerItems;
 import com.android.myapplication.dp_world.screen.pages.main.components.NavDrawerViewMvc;
+import com.android.myapplication.dp_world.screen.pages.main.data.DrawerItems;
 import com.android.myapplication.dp_world.screen.vo.ScreensNavigator;
+import com.android.myapplication.dp_world.screen.vo.ViewMvcFactory;
 
 import java.util.HashSet;
 import java.util.Set;
