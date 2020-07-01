@@ -6,25 +6,34 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.myapplication.dp_world.designpattern.DesignPattern;
-import com.android.myapplication.dp_world.screen.vo.ViewMvcFactory;
 import com.android.myapplication.dp_world.screen.pages.dp.components.DPItemViewMvc;
-import com.android.myapplication.dp_world.screen.pages.dp.components.DPItemViewMvcImpl;
+import com.android.myapplication.dp_world.screen.vo.ViewMvcFactory;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class DPRecyclerAdapter extends RecyclerView.Adapter<DPRecyclerAdapter.MyViewHolder>
-        implements DPItemViewMvcImpl.Listener {
-    public interface Listener {
-        void onDesignPatternClicked(DesignPattern designPattern);
+public class DPRecyclerAdapter extends RecyclerView.Adapter<DPRecyclerAdapter.MyViewHolder> {
+
+    public static class Props {
+        public interface Listener {
+            void onDesignPatternClicked(DesignPattern designPattern);
+        }
+
+        private final List<DesignPattern> designPatterns = new ArrayList<>();
+        private final Listener listener;
+
+        public Props(List<DesignPattern> designPatterns, Listener listener) {
+            this.designPatterns.addAll(designPatterns);
+            this.listener = listener;
+        }
     }
 
-    private List<DesignPattern> mDesignPatterns = new ArrayList<>();
-    private final Listener mListener;
+
+    private Props mProps;
     private final ViewMvcFactory mViewMvcFactory;
 
-    public DPRecyclerAdapter(Listener listener, ViewMvcFactory viewMvcFactory) {
-        mListener = listener;
+    public DPRecyclerAdapter(ViewMvcFactory viewMvcFactory, Props props) {
+        mProps = props;
         mViewMvcFactory = viewMvcFactory;
     }
 
@@ -38,8 +47,8 @@ public class DPRecyclerAdapter extends RecyclerView.Adapter<DPRecyclerAdapter.My
         }
     }
 
-    public void bindDesignPatterns(List<DesignPattern> designPatterns) {
-        mDesignPatterns = new ArrayList<>(designPatterns);
+    public void setProps(Props props) {
+        mProps = props;
         notifyDataSetChanged();
     }
 
@@ -47,23 +56,18 @@ public class DPRecyclerAdapter extends RecyclerView.Adapter<DPRecyclerAdapter.My
     @Override
     public DPRecyclerAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         DPItemViewMvc viewMvc = mViewMvcFactory.getViewMvc(DPItemViewMvc.class, parent);
-        viewMvc.registerListener(this);
         return new MyViewHolder(viewMvc);
     }
 
     @Override
     public void onBindViewHolder(@NonNull DPRecyclerAdapter.MyViewHolder holder, int position) {
-        holder.mViewMvc.bindDesignPattern(mDesignPatterns.get(position));
+        holder.mViewMvc.setProps(new DPItemViewMvc.Props(mProps.designPatterns.get(position), designPattern -> {
+            mProps.listener.onDesignPatternClicked(designPattern);
+        }));
     }
 
     @Override
     public int getItemCount() {
-        return mDesignPatterns.size();
+        return mProps.designPatterns.size();
     }
-
-    @Override
-    public void onDesignPatternClicked(DesignPattern designPattern) {
-        mListener.onDesignPatternClicked(designPattern);
-    }
-
 }

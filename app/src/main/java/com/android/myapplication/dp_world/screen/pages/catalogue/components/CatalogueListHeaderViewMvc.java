@@ -14,6 +14,14 @@ public class CatalogueListHeaderViewMvc extends BaseViewMvc {
 
     private final AppCompatImageView mAppCompatImageView;
     private final AppCompatTextView mAppCompatTextView;
+    private Props mProps;
+
+    public static class Props {
+        private final String title;
+        public Props(String title) {
+            this.title = title;
+        }
+    }
 
     public CatalogueListHeaderViewMvc(LayoutInflater inflater, @Nullable ViewGroup parent) {
         setRootView(inflater.inflate(R.layout.element_list_header,parent,false));
@@ -21,8 +29,12 @@ public class CatalogueListHeaderViewMvc extends BaseViewMvc {
         mAppCompatTextView = findViewById(R.id.list_dp_name);
     }
 
-    public void bindTitle(String title){
-        mAppCompatTextView.setText(title);
+    public void setProps(Props props){
+        mProps = props;
+        setTitle();
     }
 
+    private void setTitle(){
+        mAppCompatTextView.setText(mProps.title);
+    }
 }

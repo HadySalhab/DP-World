@@ -9,60 +9,53 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.android.myapplication.dp_world.R;
 import com.android.myapplication.dp_world.designpattern.DesignPattern;
-import com.android.myapplication.dp_world.screen.vo.ViewMvcFactory;
 import com.android.myapplication.dp_world.screen.layout.toolbar.ToolbarViewMvc;
 import com.android.myapplication.dp_world.screen.pages.catalogue.adapter.CatalogueArrayAdapter;
 import com.android.myapplication.dp_world.screen.pages.catalogue.adapter.CatalogueItem;
+import com.android.myapplication.dp_world.screen.vo.ViewMvcFactory;
 
-public class CatalogueViewMvcImpl extends CatalogueViewMvc implements CatalogueArrayAdapter.Listener {
-    private final ListView mListView;
+public class CatalogueViewMvcImpl extends CatalogueViewMvc {
     private final CatalogueArrayAdapter mAdapter;
     private final Toolbar mToolbar;
     private final ToolbarViewMvc mToolbarViewMvc;
     private final CatalogueListHeaderViewMvc mListHeaderViewMvc;
+    private final ToolbarViewMvc.Props.NavigateUpClickListener mNavigateUpClickListener = () -> {
+       mProps.listener.onNavigateUpClicked();
+    };
 
     public CatalogueViewMvcImpl(LayoutInflater layoutInflater, @Nullable ViewGroup parent, ViewMvcFactory viewMvcFactory) {
         setRootView(layoutInflater.inflate(R.layout.layout_catalogue_list, parent, false));
-        mListView = findViewById(R.id.list_catalogue);
+        ListView listView = findViewById(R.id.list_catalogue);
         mToolbar = findViewById(R.id.toolbar);
-        mAdapter = new CatalogueArrayAdapter(getContext(), this, viewMvcFactory);
-        mListView.setAdapter(mAdapter);
+        mAdapter = new CatalogueArrayAdapter(getContext(),viewMvcFactory);
+        listView.setAdapter(mAdapter);
         mToolbarViewMvc = viewMvcFactory.getViewMvc(ToolbarViewMvc.class, mToolbar);
-        mListHeaderViewMvc = viewMvcFactory.getViewMvc(CatalogueListHeaderViewMvc.class, mListView);
-        mListView.addHeaderView(mListHeaderViewMvc.getRootView());
+        mListHeaderViewMvc = viewMvcFactory.getViewMvc(CatalogueListHeaderViewMvc.class, listView);
+        listView.addHeaderView(mListHeaderViewMvc.getRootView());
         initToolbar();
     }
 
     private void initToolbar() {
         mToolbar.addView(mToolbarViewMvc.getRootView());
-        mToolbarViewMvc.bindToolbarTextTitle("Catalogue");
-        mToolbarViewMvc.enableUpButtonAndListen(new ToolbarViewMvc.NavigateUpClickListener() {
-            @Override
-            public void onNavigateUp() {
-                for (CatalogueViewMvc.Listener listener : getListeners()) {
-                    listener.onNavigateUpClicked();
-                }
-            }
-        });
+        mToolbarViewMvc.setProps(new ToolbarViewMvc.Props("", mNavigateUpClickListener, null));
     }
 
     @Override
-    public void bindCatalogueItem(CatalogueItem[] designPatternCatalogueList) {
-        mAdapter.clear();
-        mAdapter.addAll(designPatternCatalogueList);
-        mAdapter.notifyDataSetChanged();
+    public void setProps(Props props) {
+        mProps = props;
+        render();
     }
 
-    @Override
-    public void bindDesignPattern(DesignPattern designPatternObj) {
-        mToolbarViewMvc.bindToolbarTextTitle(designPatternObj.getTitle());
-        mListHeaderViewMvc.bindTitle(designPatternObj.getDescription());
-    }
+    private void render() {
+        if (mProps.designPatternCatalogueList != null) {
+            mAdapter.setProps(new CatalogueArrayAdapter.Props(mProps.designPatternCatalogueList, catalogueItem -> {
+                mProps.listener.onCatalogueItemClicked(catalogueItem);
+            }));
+        }
 
-    @Override
-    public void onCatalogueItemClicked(CatalogueItem designPatternCatalogueListItem) {
-        for (CatalogueViewMvc.Listener listener : getListeners()) {
-            listener.onCatalogueItemClicked(designPatternCatalogueListItem);
+        if (mProps.designPattern != null) {
+            mToolbarViewMvc.setProps(new ToolbarViewMvc.Props(mProps.designPattern.getTitle(), mNavigateUpClickListener, null));
+            mListHeaderViewMvc.setProps(new CatalogueListHeaderViewMvc.Props(mProps.designPattern.getDescription()));
         }
     }
 }

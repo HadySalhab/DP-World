@@ -42,8 +42,8 @@ public class CatalogueListFragment extends BaseFragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         CatalogueViewMvc mViewMvc = mViewMvcFactory.getViewMvc(CatalogueViewMvc.class, container);
-        mCatalogueListController.bindViewMvc(mViewMvc);
-        mCatalogueListController.setDesignPatternObj(getDesignPatternObj());
+        mCatalogueListController.setViewMvc(mViewMvc);
+        mCatalogueListController.setDP(getDesignPatternObj());
         return mViewMvc.getRootView();
     }
 

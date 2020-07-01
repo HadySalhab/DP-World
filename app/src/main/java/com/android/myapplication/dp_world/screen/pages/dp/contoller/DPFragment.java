@@ -41,8 +41,8 @@ public class DPFragment extends BaseFragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         DPViewMvc mViewMvc = mViewMvcFactory.getViewMvc(DPViewMvc.class, container);
-        mDPController.bindViewMvc(mViewMvc);
-        mDPController.bindDesignPatternFileName(getArguments().getString(DESIGN_PATTERN_FILE_NAME));
+        mDPController.setViewMvc(mViewMvc);
+        mDPController.setFileName(getArguments().getString(DESIGN_PATTERN_FILE_NAME));
         return (mViewMvc.getRootView());
     }
 

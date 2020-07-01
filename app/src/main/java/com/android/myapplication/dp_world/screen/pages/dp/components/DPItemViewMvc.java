@@ -7,6 +7,15 @@ public abstract class DPItemViewMvc extends BaseObservableViewMvc<DPItemViewMvc.
     public interface Listener {
         void onDesignPatternClicked(DesignPattern designPattern);
     }
+    public static class Props{
+        protected final DesignPattern designPattern;
+        protected final Listener listener;
 
-    public abstract void bindDesignPattern(DesignPattern designPattern);
+        public Props(DesignPattern designPattern, Listener listener) {
+            this.designPattern = designPattern;
+            this.listener = listener;
+        }
+    }
+    protected Props mProps;
+    public abstract void setProps(Props props);
 }

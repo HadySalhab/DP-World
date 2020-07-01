@@ -47,7 +47,7 @@ public class DPControllerTest {
     public void setup() throws Exception {
         mUseCaseTD = new UseCaseTD();
         SUT = new DPController(mUseCaseTD, mToastHelperMock, mScreensNavigatorMock);
-        SUT.bindViewMvc(mDPViewMvcMock);
+        SUT.setViewMvc(mDPViewMvcMock);
     }
 
     @Test
@@ -94,7 +94,7 @@ public class DPControllerTest {
         // Act
         SUT.onStart();
         // Assert
-        verify(mDPViewMvcMock).bindDesignPatterns(eq(getDesignPatternList()));
+        verify(mDPViewMvcMock).updateDPList(eq(getDesignPatternList()));
     }
 
     @Test

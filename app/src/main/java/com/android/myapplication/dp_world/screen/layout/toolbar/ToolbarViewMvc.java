@@ -12,19 +12,36 @@ import com.android.myapplication.dp_world.R;
 import com.android.myapplication.dp_world.screen.common.views.BaseViewMvc;
 
 public class ToolbarViewMvc extends BaseViewMvc {
-    public interface NavigateUpClickListener {
-        void onNavigateUp();
-    }
 
-    public interface HamburgerClickListener {
-        void onHamburgerClicked();
-    }
 
-    private NavigateUpClickListener mNavigateUpClickListener;
-    private HamburgerClickListener mHamburgerClickListener;
     private final TextView mTextView;
     private final ImageButton mBtnBack;
     private final ImageButton mBtnHamburger;
+    private Props mProps;
+
+    public static class Props {
+
+        public interface NavigateUpClickListener {
+            void onNavigateUp();
+        }
+
+        public interface HamburgerClickListener {
+            void onHamburgerClicked();
+        }
+
+        private final String title;
+        private final NavigateUpClickListener mNavigateUpClickListener;
+        private final HamburgerClickListener mHamburgerClickListener;
+
+        public Props(String title,
+                     NavigateUpClickListener navigateUpClickListener,
+                     HamburgerClickListener hamburgerClickListener
+        ) {
+            this.title = title;
+            mNavigateUpClickListener = navigateUpClickListener;
+            mHamburgerClickListener = hamburgerClickListener;
+        }
+    }
 
 
     public ToolbarViewMvc(LayoutInflater layoutInflater, @Nullable ViewGroup parent) {
@@ -32,32 +49,31 @@ public class ToolbarViewMvc extends BaseViewMvc {
         mTextView = findViewById(R.id.txt_toolbar_title);
         mBtnBack = findViewById(R.id.btn_back);
         mBtnBack.setOnClickListener((view) -> {
-            mNavigateUpClickListener.onNavigateUp();
+            mProps.mNavigateUpClickListener.onNavigateUp();
         });
         mBtnHamburger = findViewById(R.id.btn_hamburger);
-        mBtnHamburger.setOnClickListener((v) -> {
-            mHamburgerClickListener.onHamburgerClicked();
+        mBtnHamburger.setOnClickListener((view) -> {
+            mProps.mHamburgerClickListener.onHamburgerClicked();
         });
     }
 
-    public void bindToolbarTextTitle(String title) {
-        mTextView.setText(title);
+    public void setProps(Props props) {
+        mProps = props;
+        setTitle();
+        showIcon();
     }
 
-    public void enableUpButtonAndListen(NavigateUpClickListener navigateUpClickListener) {
-        if (mHamburgerClickListener != null) {
-            throw new RuntimeException("hamburger and up shouldn't be shown together");
-        }
-        mNavigateUpClickListener = navigateUpClickListener;
-        mBtnBack.setVisibility(View.VISIBLE);
+    private void setTitle() {
+        mTextView.setText(mProps.title);
     }
 
-    public void enableHamburgerButtonAndListen(HamburgerClickListener hamburgerClickListener) {
-        if (mNavigateUpClickListener != null) {
+    private void showIcon() {
+        if (mProps.mHamburgerClickListener != null && mProps.mNavigateUpClickListener != null) {
             throw new RuntimeException("hamburger and up shouldn't be shown together");
+        } else if (mProps.mNavigateUpClickListener != null) {
+            mBtnBack.setVisibility(View.VISIBLE);
+        } else if (mProps.mHamburgerClickListener != null) {
+            mBtnHamburger.setVisibility(View.VISIBLE);
         }
-        mHamburgerClickListener = hamburgerClickListener;
-        mBtnHamburger.setVisibility(View.VISIBLE);
-
     }
 }

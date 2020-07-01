@@ -36,7 +36,7 @@ public class CatalogueListControllerTest {
     @Before
     public void setup() throws Exception {
         SUT = new CatalogueListController(mScreensNavigatorMock, mContextMock);
-        SUT.bindViewMvc(mViewMvc);
+        SUT.setViewMvc(mViewMvc);
     }
 
     @Test
@@ -54,7 +54,7 @@ public class CatalogueListControllerTest {
         // Act
         SUT.onStart();
         // Assert
-        verify(mViewMvc).bindCatalogueItem(eq(CatalogueItem.values()));
+        verify(mViewMvc).updateCatalogueList(eq(CatalogueItem.values()));
     }
     // region helper methods -----------------------------------------------------------------------
 

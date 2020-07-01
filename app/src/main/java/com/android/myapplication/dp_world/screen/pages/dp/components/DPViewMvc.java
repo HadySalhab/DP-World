@@ -10,7 +10,17 @@ public abstract class DPViewMvc extends BaseObservableViewMvc<DPViewMvc.Listener
         void onDesignPatternClicked(DesignPattern designPattern);
     }
 
-    abstract public void bindDesignPatterns(List<DesignPattern> designPatterns);
+    public static class Props {
+        protected final List<DesignPattern> designPatterns;
+        protected final DPViewMvc.Listener listener;
 
-    abstract public void bindToolbarTitle(String title);
+        public Props(List<DesignPattern> designPatterns, DPViewMvc.Listener listener) {
+            this.designPatterns = designPatterns;
+            this.listener = listener;
+        }
+    }
+
+    protected Props mProps;
+
+    abstract public void setProps(Props props);
 }
