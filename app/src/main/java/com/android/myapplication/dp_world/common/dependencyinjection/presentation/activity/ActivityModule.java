@@ -10,7 +10,6 @@ import androidx.fragment.app.FragmentManager;
 import com.android.myapplication.dp_world.data.AssetStreamReader;
 import com.android.myapplication.dp_world.data.JsonToGsonConverter;
 import com.android.myapplication.dp_world.designpattern.FetchDesignPatternsUseCase;
-import com.android.myapplication.dp_world.designpattern.FileNameDispatcher;
 import com.android.myapplication.dp_world.screen.common.ViewMvcFactory;
 import com.android.myapplication.dp_world.screen.common.controllers.FragmentFrameWrapper;
 import com.android.myapplication.dp_world.screen.common.navdrawer.NavDrawerController;
@@ -96,13 +95,9 @@ public class ActivityModule {
 
     @Provides
     @ActivityScope
-    ScreensNavigator getScreensNavigator(FragmentManager fragmentManager, FragmentFrameWrapper fragmentFrameWrapper, FileNameDispatcher fileNameDispatcher) {
-        return new ScreensNavigator(fragmentManager, fragmentFrameWrapper, fileNameDispatcher);
+    ScreensNavigator getScreensNavigator(FragmentManager fragmentManager, FragmentFrameWrapper fragmentFrameWrapper) {
+        return new ScreensNavigator(fragmentManager, fragmentFrameWrapper);
     }
 
-    @Provides
-    FileNameDispatcher getFileNameDispatcher() {
-        return new FileNameDispatcher();
-    }
 
 }

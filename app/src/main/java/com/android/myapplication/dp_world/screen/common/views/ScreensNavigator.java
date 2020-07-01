@@ -6,8 +6,8 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import com.android.myapplication.dp_world.common.Constants;
 import com.android.myapplication.dp_world.designpattern.DesignPattern;
-import com.android.myapplication.dp_world.designpattern.FileNameDispatcher;
 import com.android.myapplication.dp_world.screen.common.controllers.FragmentFrameWrapper;
 import com.android.myapplication.dp_world.screen.common.navdrawer.DrawerItems;
 import com.android.myapplication.dp_world.screen.designpatterncatalogue.CatalogueListFragment;
@@ -19,12 +19,10 @@ public class ScreensNavigator {
     private final FragmentManager mFragmentManager;
     private final FragmentFrameWrapper mFragmentFrameWrapper;
     private FragNavController mFragNavController;
-    private final FileNameDispatcher mFileNameDispatcher;
 
-    public ScreensNavigator(FragmentManager fragmentManager, FragmentFrameWrapper fragmentFrameWrapper, FileNameDispatcher fileNameDispatcher) {
+    public ScreensNavigator(FragmentManager fragmentManager, FragmentFrameWrapper fragmentFrameWrapper) {
         mFragmentManager = fragmentManager;
         mFragmentFrameWrapper = fragmentFrameWrapper;
-        mFileNameDispatcher = fileNameDispatcher;
     }
 
 
@@ -39,11 +37,11 @@ public class ScreensNavigator {
         public Fragment getRootFragment(int index) {
             switch (index) {
                 case FragNavController.TAB1:
-                    return BaseDesignPatternsFragment.newInstance(mFileNameDispatcher.getFileNameFor(DrawerItems.CREATIONAL));
+                    return BaseDesignPatternsFragment.newInstance(Constants.CREATIONAL_FILE_NAME);
                 case FragNavController.TAB2:
-                    return BaseDesignPatternsFragment.newInstance(mFileNameDispatcher.getFileNameFor(DrawerItems.BEHAVIORAL));
+                    return BaseDesignPatternsFragment.newInstance(Constants.BEHAVIORAL_FILE_NAME);
                 case FragNavController.TAB3:
-                    return BaseDesignPatternsFragment.newInstance(mFileNameDispatcher.getFileNameFor(DrawerItems.STRUCTURAL));
+                    return BaseDesignPatternsFragment.newInstance(Constants.STRUCTURAL_FILE_NAME);
                 default:
                     throw new IllegalStateException("unsupported tab index: " + index);
             }
